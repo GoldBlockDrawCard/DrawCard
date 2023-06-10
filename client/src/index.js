@@ -6,8 +6,9 @@ import Main from './pages/Main';
 import MainProfile from './pages/MainProfile';
 import ProfileSell from './pages/ProfileSell';
 import CardDetail from './pages/CardDetail';
-import CardBuy from './pages/CardBuy';
+import CardBuy from './pages/CardBuypage';
 import Items from './pages/Items';
+import MainpageProfile from './pages/MainpageProfile';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,6 +31,7 @@ root.render(
           <Route path="/" element={<Main/>}/>
           {/* 프로필 페이지 이동 */}
           <Route path="/mainprofile" element={<MainProfile/>}/>
+          <Route path="/mainpageprofile" element={<MainpageProfile/>}/>
           {/* 프로필 구매 페이지 페이지 이동 */}
           <Route path="/profilesell" element={<ProfileSell/>}/>
           {/* 명함 상세 페이지 페이지 이동 */}

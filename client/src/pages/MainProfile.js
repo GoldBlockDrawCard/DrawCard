@@ -1,46 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MainProfile.css'
-import { Container,Col,Row } from 'react-bootstrap'
-import Navbar from '../component/Navbar'
-import MenuButton from '../component/MenuButton'
-import ProductCard from '../component/ProductCard'
+import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import Example from '../component/img/draw_card.png'
+import Profile from '../component/img/defualt.png'
+import Change from '../component/img/change.png'
 
-// 프로필 페이지 작성자 이현일
 const MainProfile = () => {
+  const [category, setCategory] = useState("buy");
+  
   return (
     <div className="profile">
 
       <Container>
-      <ProductCard/>
-      <h2>프로필 이름</h2>
-      <hr></hr>
+        <hr/>
+        <div className='profileImg'>
+            <img src={Profile} alt='profile_default' width={'100%'} height={'350px'}/>
+            <div>Untitle0001<img className='profileDefault' src={Change} /></div>
+        </div>
+        <hr/>
 
       <div className="menu-buttons">
-        <Link to='/Mainprofile'>
-          <MenuButton name="구매 목록"/>
-        </Link>
 
-        <Link to='/items'>
-        <MenuButton name="판매 목록"/>
-        </Link>
+        <button className="catebtn" onClick={()=>{
+                setCategory("buy")
+            }}> 구매 목록 <span></span></button>
 
-        <Link to ='/profilesell'>
-          <MenuButton name="판매 등록"/>
-         </Link>
+        <button className="catebtn" onClick={()=>{
+                setCategory("sell")
+            }}> 판매 목록 <span></span></button>
+
+        <button className="catebtn" onClick={()=>{
+                setCategory("addsell")
+            }}> 판매 등록 <span></span></button>
+
       </div>
 
-      <Row>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
-          <Col lg="4" ><ProductCard/></Col>
+      {category === "buy" && <>
+        <div className='buy_profile'>
+            <Link to="/cardDetail" className='new_content'>
+                <img src={Example} alt='profile'/>
+            </Link>
+        </div>
+      </>}
 
-        </Row>
+      {category === "sell" && <>
+        <div className='sellDprofile'>
+          <div>등록된 물품이 없습니다.</div>
+          <button className="catebtn" onClick={()=>{
+                  setCategory("addsell")
+              }}> 판매 등록 <span></span></button>
+        </div>
+      </>}
+
+      {category === "addsell" && <>
+        <div className='sellAprofile'>
+          <div><div>디자인 이름 : </div><input/></div>
+          <div><div>디자인 설명 : </div><input/></div>
+          <div><div>디자인 카테고리 : </div><input/></div>
+          <div><div>디자인 가격 : </div><input/></div>
+          <div className='sellAprofiledesc'>* 판매 가격의 10%는 수수료로 사용됩니다.</div>
+          <div><div>디자인 첨부 : </div><input/></div>
+          <div><button className="catebtn" >등록</button><button className="catebtn" onClick={()=>{
+                setCategory("buy")
+            }}>취소</button></div>
+        </div>
+      </>}
 
 
     </Container>

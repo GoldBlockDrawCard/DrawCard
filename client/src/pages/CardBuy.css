@@ -179,3 +179,71 @@ font-weight:bold;
 .modal_buy_cancle button:nth-of-type(1){
 margin-right:5%;
 } 
+
+.buySub {
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --main-color: #323232;
+  width: 480px;
+  height: 320px;
+  padding: 20px;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+}
+
+.inputForm div {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.inputForm div div{
+  width: 100px;
+  font-size: large;
+  display: inline-block;
+}
+
+.inputForm div input{
+  width: 200px;
+}
+
+.BuyBtn {
+  padding-left: 100px;
+}
+
+.card {
+  display: flex;
+}
+
+.card div {
+  position: absolute;
+}
+
+.card_name {
+  right: 0;
+  padding-top: 70px;
+  padding-right: 35px;
+  font-size: x-large;
+}
+
+.card_position {
+  right: 0;
+  padding-top: 100px;
+  padding-right: 35px;
+  font-size: medium;
+}
+
+.card_attach {
+  right: 0;
+  padding-top: 125px;
+  padding-right: 35px;
+  font-size: x-small;
+}

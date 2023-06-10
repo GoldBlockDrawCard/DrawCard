@@ -38,3 +38,38 @@
 .button-area Button {
     margin :20px;
 }
+
+.profileDefault {
+    width: 3%;
+    cursor: pointer;
+}
+
+.sellDprofile{
+    padding-top: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+.sellAprofile{
+    justify-content: center;
+    text-align: center;
+}
+
+.sellAprofile div{
+    padding: 8px;
+}
+
+.sellAprofile div div{
+    display: inline-block;
+    text-align: left;
+    width: 180px;
+}
+
+.sellAprofile div input{
+    width: 200px;
+}
+
+.sellAprofiledesc {
+    font-size: small;
+    
+}
