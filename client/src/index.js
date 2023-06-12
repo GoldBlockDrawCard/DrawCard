@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import MainProfile from './pages/MainProfile';
 import ProfileSell from './pages/ProfileSell';
 import CardDetail from './pages/CardDetail';
+import CardDetailMy from './pages/CardDetailMy';
 import CardBuy from './pages/CardBuypage';
 import Items from './pages/Items';
 import MainpageProfile from './pages/MainpageProfile';
@@ -36,6 +37,7 @@ root.render(
           <Route path="/profilesell" element={<ProfileSell/>}/>
           {/* 명함 상세 페이지 페이지 이동 */}
           <Route path="/carddetail" element={<CardDetail/>}/>
+          <Route path="/carddetailmy" element={<CardDetailMy/>}/>
           {/* 명함 구매 페이지 페이지 이동 */}
           <Route path="/cardbuy" element={<CardBuy/>}/>
           {/* 명함 판매 목록 페이지 이동 */}

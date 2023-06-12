@@ -81,7 +81,7 @@ function CardBuy() {
                   
                     <h3>입력한 내용은 바꿀수 없습니다 구매하시겠습니까?</h3>
                     <div className='modal_buy_cancle'>
-                          <button className='modal_buy'>구매</button>
+                        <Link to="/CardDetailMy" className='cancle_btn'><button className='modal_buy'>구매</button></Link>
                           <button className='modal_cancle' onClick={closeModal}>취소</button>
                     </div>
                 </div>

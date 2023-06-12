@@ -11,6 +11,17 @@ function CardBuypage() {
     const [userPosition , setPosition] = useState("");
     const [userAttach , setAttach] = useState("");
 
+    const [isModalOpen , setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+      
+      setIsModalOpen(true);
+    };
+  
+    const closeModal = () =>{
+      setIsModalOpen(false);
+    };
+
     const nickHandler = e =>
     {
         setUserName(e.target.value);
@@ -76,14 +87,25 @@ function CardBuypage() {
 
 
                     <div className='BuyBtn'>
-                      {/* <Link to='/mainprofile'> */}
-                        <button className="catebtn" onClick={onDownloadBtn}> 구매 </button>
-                      {/* </Link> */}
+                      <button className="catebtn" onClick={openModal}> 구매 </button>
                       <Link to='/'>
                         <button className="catebtn"> 취소 </button>
                       </Link>
 
                     </div>
+
+                    {isModalOpen && (
+                
+                      <div className="modal2">
+
+                        <div className='modaltop'>입력한 내용은 바꿀수 없습니다. </div>
+                        <div className='modalbtm'>구매하시겠습니까?</div>
+                            <Link to="/MainProfile"><button className='catebtn'>구매</button></Link>
+                            <button className='catebtn' onClick={closeModal}>취소</button>
+                      </div>
+                      
+                      
+                    )}
 
                   </div>
                   

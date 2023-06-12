@@ -140,21 +140,20 @@ li{list-style: none;}
 }
 
 .modal2{
-  width:50%;
+  width:40%;
   position:absolute;
+  background: lightgrey;
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);    
   text-align: center;
-  height:500px;
-  background:#fff;
+  height:50%;
   border: 5px solid #000;
   border-radius: 20px;
 }
 
 .modal2 h3{
-margin-top:15%;
-font-size:36px;
+  font-size:36px;
 }
 
 .modal_buy_cancle{
@@ -200,22 +199,26 @@ margin-right:5%;
   box-shadow: 4px 4px var(--main-color);
 }
 
+.inputForm{
+  padding-left: 50px;
+}
+
 .inputForm div {
   padding: 5px;
 }
 
 .inputForm div div{
-  width: 100px;
+  width: 35%;
   font-size: large;
   display: inline-block;
 }
 
 .inputForm div input{
-  width: 50%;
+  width: 65%;
 }
 
 .BuyBtn {
-  padding-left: 10px;
+  padding-left: 80px;
 }
 
 .card {
@@ -245,4 +248,14 @@ margin-right:5%;
   padding-top: 125px;
   padding-right: 35px;
   font-size: x-small;
+}
+
+.modaltop {
+  padding-top: 15%;
+  font-size: x-large;
+}
+.modalbtm {
+  padding-top: 3%;
+  font-size: x-large;
+  padding-bottom: 10%;
 }

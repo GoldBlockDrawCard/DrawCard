@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from './img/Logo.png';
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./connecter";

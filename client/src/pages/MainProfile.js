@@ -38,7 +38,7 @@ const MainProfile = () => {
 
       {category === "buy" && <>
         <div className='buy_profile'>
-            <Link to="/cardDetail" className='new_content'>
+            <Link to="/cardDetailmy" className='new_content'>
                 <img src={Example} alt='profile'/>
             </Link>
         </div>
