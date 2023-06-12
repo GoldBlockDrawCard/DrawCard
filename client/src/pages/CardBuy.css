@@ -186,9 +186,9 @@ margin-right:5%;
   --font-color-sub: #666;
   --bg-color: #fff;
   --main-color: #323232;
-  width: 480px;
-  height: 320px;
-  padding: 20px;
+  width: 95%;
+  height: 350px;
+  padding: 10%;
   background: lightgrey;
   display: flex;
   flex-direction: column;
@@ -201,7 +201,6 @@ margin-right:5%;
 }
 
 .inputForm div {
-  margin-left: 20px;
   padding: 5px;
 }
 
@@ -212,11 +211,11 @@ margin-right:5%;
 }
 
 .inputForm div input{
-  width: 200px;
+  width: 50%;
 }
 
 .BuyBtn {
-  padding-left: 100px;
+  padding-left: 10px;
 }
 
 .card {

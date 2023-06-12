@@ -112,8 +112,8 @@ font-weight:bold;
 }
 
 .detailImg{
-  width: 500px;
-  height: 400px;
+  width: 45%;
+  height: 420px;
   margin-left: 5%;
   border: 2px solid black;
   justify-content: center;
@@ -122,9 +122,14 @@ font-weight:bold;
 
 }
 
+.detailImg img {
+  width: 100%;
+}
+
 .detailDesc{
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 50%;
 }
 
 .detailCate{
@@ -147,9 +152,9 @@ font-weight:bold;
   --font-color-sub: #666;
   --bg-color: #fff;
   --main-color: #323232;
-  width: 480px;
-  height: 320px;
-  padding: 20px;
+  width: 95%;
+  height: 350px;
+  padding: 8%;
   background: lightgrey;
   display: flex;
   flex-direction: column;
