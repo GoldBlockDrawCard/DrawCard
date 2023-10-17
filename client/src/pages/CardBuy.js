@@ -1,9 +1,8 @@
 import React ,{ useState } from 'react';
-import Img from '../component/img/Logo.png';
+import Img from '../assets/images/Logo.png';
 import './CardBuy.css';
 import { Link } from 'react-router-dom';
 
-// 프로필 구매 페이지 작성자 김용우
 function CardBuy() {
 
     const [title , setTitle] = useState('goldblock');

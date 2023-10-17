@@ -1,7 +1,7 @@
 import React ,{ useState } from 'react';
 import './CardDetail.css';
 import { Link } from "react-router-dom";
-import artDC2 from '../component/img/draw_card.png'
+import artDC2 from '../assets/images/draw_card.png'
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 

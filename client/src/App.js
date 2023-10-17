@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+
+import Header from './components/Header';
+import Main from './pages/Main';
+import MainProfile from './pages/MainProfile';
+import ProfileSell from './pages/ProfileSell';
+import CardDetail from './pages/CardDetail';
+import CardDetailMy from './pages/CardDetailMy';
+import CardBuy from './pages/CardBuypage';
+import Items from './pages/Items';
+import MainpageProfile from './pages/MainpageProfile';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Header/>
+        <Routes>
+          {/* 메인 페이지 이동 기본 값 */}
+          <Route path="/" element={<Main/>}/>
+          {/* 프로필 페이지 이동 */}
+          <Route path="/mainprofile" element={<MainProfile/>}/>
+          <Route path="/mainpageprofile" element={<MainpageProfile/>}/>
+          {/* 프로필 구매 페이지 페이지 이동 */}
+          <Route path="/profilesell" element={<ProfileSell/>}/>
+          {/* 명함 상세 페이지 페이지 이동 */}
+          <Route path="/carddetail" element={<CardDetail/>}/>
+          <Route path="/carddetailmy" element={<CardDetailMy/>}/>
+          {/* 명함 구매 페이지 페이지 이동 */}
+          <Route path="/cardbuy" element={<CardBuy/>}/>
+          {/* 명함 판매 목록 페이지 이동 */}
+          <Route path ="/items" element= {<Items/>}/>
+        </Routes>
     </div>
   );
 }

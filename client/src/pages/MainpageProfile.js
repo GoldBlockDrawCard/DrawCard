@@ -1,14 +1,14 @@
 import React from 'react'
 import './MainpageProfile.css'
 import { Container } from 'react-bootstrap'
-import Profile from '../component/img/author1.PNG'
+import Profile from '../assets/images/author1.PNG'
 import { useState } from 'react';
-import Example1 from '../component/img/ex1.png'
-import Example2 from '../component/img/ex2.png'
-import Example3 from '../component/img/ex3.png'
-import Art2 from '../component/img/artDC2.PNG'
-import Art3 from '../component/img/artDC3.PNG'
-import Art4 from '../component/img/artDC4.PNG'
+import Example1 from '../assets/images/ex1.png'
+import Example2 from '../assets/images/ex2.png'
+import Example3 from '../assets/images/ex3.png'
+import Art2 from '../assets/images/artDC2.PNG'
+import Art3 from '../assets/images/artDC3.PNG'
+import Art4 from '../assets/images/artDC4.PNG'
 import { Link } from 'react-router-dom';
 
 

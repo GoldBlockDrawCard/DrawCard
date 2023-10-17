@@ -1,11 +1,11 @@
 import React from 'react'
 import './ProfileSell.css'
-import MenuButton from '../component/MenuButton'
-import ProductCard from '../component/ProductCard';
+import MenuButton from '../components/MenuButton'
+import ProductCard from '../components/ProductCard';
 import {Container,Row,Col, Button,  Dropdown, InputGroup,Form} from 'react-bootstrap'
 
 
-// 프로필 판매 페이지 작성자 이현일
+
 const ProfileSell = () => {
   return (
     <div className="profile">

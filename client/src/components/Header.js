@@ -1,6 +1,6 @@
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from './img/Logo.png';
+import Logo from '../assets/images/Logo.png';
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./connecter";
 import { isNoEthereumObject } from "./error";

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Container } from 'react-bootstrap';
-import ProductCard from '../component/ProductCard';
-import MenuButton from '../component/MenuButton';
+import ProductCard from '../components/ProductCard';
+import MenuButton from '../components/MenuButton';
 import './Items.css'
 
 

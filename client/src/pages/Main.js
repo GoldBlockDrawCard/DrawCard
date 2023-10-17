@@ -1,21 +1,21 @@
 import './Main.css'
-import Art1 from '../component/img/artDC1.png'
-import Art2 from '../component/img/artDC2.PNG'
-import Art3 from '../component/img/artDC3.PNG'
-import Art4 from '../component/img/artDC4.PNG'
-import Normal1 from '../component/img/normalDC1.PNG'
-import Normal2 from '../component/img/normalDC2.PNG'
+import Art1 from '../assets/images/artDC1.png'
+import Art2 from '../assets/images/artDC2.PNG'
+import Art3 from '../assets/images/artDC3.PNG'
+import Art4 from '../assets/images/artDC4.PNG'
+import Normal1 from '../assets/images/normalDC1.PNG'
+import Normal2 from '../assets/images/normalDC2.PNG'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import Author1 from '../component/img/author1.PNG';
-import Author2 from '../component/img/author2.PNG';
-import DrawCard from '../component/DrawCard';
-import MainCard from '../component/MainCard';
+import Author1 from '../assets/images/author1.PNG';
+import Author2 from '../assets/images/author2.PNG';
+import DrawCard from '../components/DrawCard';
+import MainCard from '../components/MainCard';
 
 
-// 메인 페이지 작성자 이금철
+
 const Main = () => {
     const [category, setCategory] = useState("ALL");
     const test = useNavigate();

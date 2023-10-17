@@ -1,15 +1,13 @@
 import React ,{ useState } from 'react';
 import './CardDetail.css';
 import { Link } from "react-router-dom";
-import artDC2 from '../component/img/artDC2.PNG'
+import artDC2 from '../assets/images/artDC2.PNG'
 
-// 프로필 상세 페이지 작성자 김용우
+
 function CardDetail() {
   
   const [title , setTitle] = useState('goldblock');
-  // const [명함이미지 , 명함이미지변경] =useState(time)
 
-  // 밑에두개는  나중에 데이터를 받아와서 넣기
   const [designCategori,setCategori] = useState('Anna Lucia x Gees Bend Quilters: Generations')
   const [designName, setDesignName] = useState('Generation 253')
   const [designerName, setDesignerName] = useState('Owned by 49E635')
