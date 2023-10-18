@@ -1,5 +1,4 @@
-import './Header.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../assets/images/Logo.png';
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./connecter";
@@ -7,7 +6,6 @@ import { isNoEthereumObject } from "./error";
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
-// 헤더 페이지 작성자 이금철
 const Header = () => {
     const [balance, setBalance] = useState('');
     const [etherBalance, setEtherBalance] = useState("");

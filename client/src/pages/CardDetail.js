@@ -1,5 +1,4 @@
 import React ,{ useState } from 'react';
-import './CardDetail.css';
 import { Link } from "react-router-dom";
 import artDC2 from '../assets/images/artDC2.PNG'
 

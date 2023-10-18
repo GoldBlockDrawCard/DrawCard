@@ -1,6 +1,5 @@
 import React ,{ useState } from 'react';
 import Img from '../assets/images/Logo.png';
-import './CardBuy.css';
 import { Link } from 'react-router-dom';
 
 function CardBuy() {
