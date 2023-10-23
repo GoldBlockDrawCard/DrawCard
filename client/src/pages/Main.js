@@ -4,7 +4,7 @@ import Art3 from "../assets/images/artDC3.PNG";
 import Art4 from "../assets/images/artDC4.PNG";
 import Normal1 from "../assets/images/normalDC1.PNG";
 import Normal2 from "../assets/images/normalDC2.PNG";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -15,7 +15,18 @@ import MainCard from "../components/MainCard";
 
 const Main = () => {
   const [category, setCategory] = useState("ALL");
-  const test = useNavigate();
+  const items = {
+    data: [
+      {
+        id: 0,
+        name: "items0",
+        cate: "",
+        author: "Whee",
+        check: 0,
+        url: "../assets/images/artDC1.png",
+      },
+    ],
+  };
 
   return (
     <div className="mainpage">
@@ -71,12 +82,7 @@ const Main = () => {
       {category === "ALL" && (
         <>
           {/* 작가 프로필 홍보 영역 */}
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
+          <Swiper spaceBetween={50} slidesPerView={1}>
             <SwiperSlide>
               <div className="main_profile">
                 <Link to="/mainpageprofile" className="main_content">
@@ -102,7 +108,7 @@ const Main = () => {
             {/* 최신 업로드 프로필 영역 */}
             <div className="new_profile">
               <Link to="/cardDetail" className="new_content">
-                <img src={Art1} alt="profile" />
+                <img src={items.data.url} alt="profile" />
                 <DrawCard />
               </Link>
               <Link to="/cardDetail" className="new_content">

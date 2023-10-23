@@ -11,7 +11,7 @@ const Header = () => {
     const [etherBalance, setEtherBalance] = useState("");
 
     const {
-        chainedId,
+        // chainedId,
         account,
         active,
         activate,
@@ -41,7 +41,6 @@ const Header = () => {
 	}, [account, library]);
 
     useEffect(() => {
-        console.log(ethers)
         setEtherBalance(ethers.formatEther(Number(balance)))
     }, [balance])
     
