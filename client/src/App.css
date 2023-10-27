@@ -1,3 +1,25 @@
+/***************************/
+/***** wrap-container ******/
+/***************************/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+/***************************/
+/********* Header *********/
+/***************************/
+
 .header {
   position: fixed;
   display: inline-block;
@@ -5,12 +27,7 @@
   width: 100%;
   height: 100px;
   z-index: 3;
-}
-
-.contents {
-  display: flex;
-  padding-left: 15%;
-  padding-right: 15%;
+  border-bottom: #000 1px;
 }
 
 .logo_area {
@@ -190,19 +207,6 @@
 /********* CardBuy *********/
 /***************************/
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-li {
-  list-style: none;
-}
 
 .main .h3 {
   font-size: 24px;
@@ -579,24 +583,17 @@ li {
 }
 
 /***************************/
-/********** Main ***********/
+/***** main-container ******/
 /***************************/
 
-.mainpage {
-  width: 100%;
+.main-container {
   padding-top: 100px;
   padding-bottom: 50px;
-}
-
-.cate {
-  padding-left: 15%;
-  display: flex;
 }
 
 .catebtn {
   border: 1.5px solid black;
   padding: 3px;
-  width: 100px;
   margin: 7px;
   color: #f5f0f0;
   background-color: #101014;
@@ -611,7 +608,6 @@ li {
 }
 
 .subtitle {
-  padding-left: 15%;
   padding-top: 2%;
   font-size: 20px;
   font-weight: 700;
@@ -625,7 +621,6 @@ li {
 }
 
 .main_content {
-  width: 70%;
   height: 90%;
   border: 2px solid black;
   overflow: hidden;
@@ -699,7 +694,6 @@ li {
 }
 
 .new_profile {
-  width: 70%;
   height: 20%;
   display: flex;
   justify-content: space-between;

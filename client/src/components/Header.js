@@ -46,8 +46,9 @@ const Header = () => {
     
     return (
         <header className='header'>
+            <div className='container'>
             
-            <div className='contents'>
+            <div className='contents d-flex'>
 
                 {/* 로고 영역 */}
                 <div className='logo_area'>
@@ -99,8 +100,7 @@ const Header = () => {
 
                 </div>
             </div>
-
-            {/* <button type="button" onClick={handdleConnect}>{active ? 'disconnect':'connect'}</button> */}
+            </div>
         </header>
     );
 }

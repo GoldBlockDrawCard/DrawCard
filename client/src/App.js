@@ -17,7 +17,7 @@ import MainpageProfile from "./pages/MainpageProfile";
 
 function App() {
   return (
-    <div>
+    <div className="wrap-container">
       <WagmiConfig config={config}>
         <Header />
         <Routes>

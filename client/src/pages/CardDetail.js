@@ -7,7 +7,7 @@ function CardDetail() {
     <div className="CardDetail">
       <div className="main">
         <div className="detailTitle">디자인 정보</div>
-        <hr />
+        <hr/>
 
         <div className="main_contents">
           <div className="detailImg">
