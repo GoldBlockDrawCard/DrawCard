@@ -22,7 +22,7 @@ const Items = () => {
         <h4>구매할 목록이 없습니다.</h4>
         <Button variant="warning" width={50}>
           구매 페이지
-        </Button>{" "}
+        </Button>
       </div>
     </div>
   );

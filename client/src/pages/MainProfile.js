@@ -21,7 +21,7 @@ const MainProfile = () => {
           />
           <div>
             Untitle0001
-            <img className="profileDefault" src={Change} />
+            <img className="profileDefault" src={Change} alt="profile" />
           </div>
         </div>
         <hr />
@@ -33,7 +33,6 @@ const MainProfile = () => {
               setCategory("buy");
             }}
           >
-            {" "}
             구매 목록 <span></span>
           </button>
 
@@ -43,7 +42,6 @@ const MainProfile = () => {
               setCategory("sell");
             }}
           >
-            {" "}
             판매 목록 <span></span>
           </button>
 
@@ -53,7 +51,6 @@ const MainProfile = () => {
               setCategory("addsell");
             }}
           >
-            {" "}
             판매 등록 <span></span>
           </button>
         </div>
