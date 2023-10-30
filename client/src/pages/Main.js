@@ -15,21 +15,9 @@ import MainCard from "../components/MainCard";
 
 const Main = () => {
   const [category, setCategory] = useState("ALL");
-  const items = {
-    data: [
-      {
-        id: 0,
-        name: "items0",
-        cate: "",
-        author: "Whee",
-        check: 0,
-        url: "../assets/images/artDC1.png",
-      },
-    ],
-  };
 
   return (
-    <div className="main-container">
+    <div className="mainContainer defaultContainer">
       <div className="container">
         {/* 카테고리 영역 */}
         <div className="main-cate">
@@ -39,7 +27,7 @@ const Main = () => {
               setCategory("ALL");
             }}
           >
-            ALL <span></span>
+            <span>ALL</span>
           </button>
           <button
             className="catebtn col-1"
@@ -47,7 +35,7 @@ const Main = () => {
               setCategory("BEST");
             }}
           >
-            BEST <span></span>
+            <span>BEST</span>
           </button>
           <button
             className="catebtn col-1"
@@ -55,7 +43,7 @@ const Main = () => {
               setCategory("NORMAL");
             }}
           >
-            NORMAL <span></span>
+            <span>NORMAL</span>
           </button>
           <button
             className="catebtn col-1"
@@ -63,7 +51,7 @@ const Main = () => {
               setCategory("ART");
             }}
           >
-            ART <span></span>
+            <span>ART</span>
           </button>
           <button
             className="catebtn col-1"
@@ -71,7 +59,7 @@ const Main = () => {
               setCategory("EFFECT");
             }}
           >
-            EFFECT <span></span>
+            <span>EFFECT</span>
           </button>
         </div>
 
@@ -105,21 +93,73 @@ const Main = () => {
                   </Link>
                 </div>
               </SwiperSlide>
+              <SwiperSlide>
+                <div className="main_profile">
+                  <Link to="/mainpageprofile" className="main_content">
+                    <img
+                      className="main_profileImg"
+                      src={Author1}
+                      alt="main1"
+                    />
+                    <div className="main_profile_title">Whee</div>
+                    <MainCard />
+                  </Link>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="main_profile">
+                  <Link to="/mainprofile" className="main_content">
+                    <img
+                      className="main_profileImg"
+                      src={Author2}
+                      alt="main2"
+                    />
+                    <div className="main_profile_title">StrawberryMoon</div>
+                    <MainCard />
+                  </Link>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="main_profile">
+                  <Link to="/mainpageprofile" className="main_content">
+                    <img
+                      className="main_profileImg"
+                      src={Author1}
+                      alt="main1"
+                    />
+                    <div className="main_profile_title">Whee</div>
+                    <MainCard />
+                  </Link>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="main_profile">
+                  <Link to="/mainprofile" className="main_content">
+                    <img
+                      className="main_profileImg"
+                      src={Author2}
+                      alt="main2"
+                    />
+                    <div className="main_profile_title">StrawberryMoon</div>
+                    <MainCard />
+                  </Link>
+                </div>
+              </SwiperSlide>
             </Swiper>
 
             <div>
               <div className="subtitle">최신 업데이트</div>
               {/* 최신 업로드 프로필 영역 */}
               <div className="new_profile">
-                <Link to="/cardDetail" className="new_content">
-                  <img src={items.data.url} alt="profile" />
-                  <DrawCard />
-                </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
                   <DrawCard />
                 </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
+                  <img src={Art2} alt="profile" />
+                  <DrawCard />
+                </Link>
+                <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
                   <DrawCard />
                 </Link>
@@ -128,15 +168,15 @@ const Main = () => {
               <div className="subtitle">Whee 작가</div>
               {/* 작가 이름 및 업로드 프로필 영역 */}
               <div className="author_profile1">
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
                   <DrawCard />
                 </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Art3} alt="profile" />
                   <DrawCard />
                 </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Art4} alt="profile" />
                   <DrawCard />
                 </Link>
@@ -145,15 +185,15 @@ const Main = () => {
               <div className="subtitle">StrawberryMoon 작가</div>
               {/* 작가 이름 및 업로드 프로필 영역 */}
               <div className="author_profile2">
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Art1} alt="profile" />
                   <DrawCard />
                 </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
                   <DrawCard />
                 </Link>
-                <Link to="/cardDetail" className="new_content">
+                <Link to="/designinfo" className="new_content">
                   <img src={Normal2} alt="profile" />
                   <DrawCard />
                 </Link>
@@ -166,30 +206,30 @@ const Main = () => {
           <>
             {/* 많이 팔린 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
             </div>
 
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
                 <DrawCard />
               </Link>
@@ -201,15 +241,15 @@ const Main = () => {
           <>
             {/* 작가 프로필 홍보 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
@@ -217,15 +257,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
                 <DrawCard />
               </Link>
@@ -233,15 +273,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
@@ -253,15 +293,15 @@ const Main = () => {
           <>
             {/* 작가 프로필 홍보 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
                 <DrawCard />
               </Link>
@@ -269,15 +309,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
                 <DrawCard />
               </Link>
@@ -285,15 +325,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
                 <DrawCard />
               </Link>
@@ -305,15 +345,15 @@ const Main = () => {
           <>
             {/* 작가 프로필 홍보 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
@@ -321,15 +361,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
@@ -337,15 +377,15 @@ const Main = () => {
 
             {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
                 <DrawCard />
               </Link>
-              <Link to="/cardDetail" className="new_content">
+              <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
                 <DrawCard />
               </Link>
