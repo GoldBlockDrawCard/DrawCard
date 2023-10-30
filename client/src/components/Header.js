@@ -45,7 +45,7 @@ const Header = () => {
     }, [balance])
     
     return (
-        <header className='header'>
+        <div className='header'>
             <div className='container'>
             
             <div className='contents d-flex'>
@@ -101,7 +101,7 @@ const Header = () => {
                 </div>
             </div>
             </div>
-        </header>
+        </div>
     );
 }
 
