@@ -4,6 +4,14 @@
 
 * {
   padding: 0;
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --main-color: #323232;
+  --modaloverlay-color: #0202029d;
+  --header-color: #fff;
+  --content-color: #ecf2f7;
+  --desc-color: #4691c4;
 }
 
 a {
@@ -16,9 +24,20 @@ li {
 }
 
 .defaultContainer {
-  padding-top: 100px;
+  padding-top: 110px;
   padding-bottom: 50px;
-  background-color: #ecf2f7;
+  background-color: var(--content-color);
+}
+
+.modal-overlay {
+  position: fixed;
+  padding-top: 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modaloverlay-color);
+  z-index: 990;
 }
 
 /***************************/
@@ -27,7 +46,7 @@ li {
 
 .header {
   position: fixed;
-  background-color: #FFFFFF;
+  background-color: var(--header-color);
   width: 100%;
   height: 100px;
   z-index: 3;
@@ -209,7 +228,7 @@ li {
 }
 
 /***************************/
-/****** mainContainer ******/
+/*********** main **********/
 /***************************/
 
 .catebtn {
@@ -404,222 +423,114 @@ li {
   margin: auto;
 }
 
-
 /***************************/
-/********* CardBuy *********/
+/******* DesignInfo ********/
 /***************************/
 
-.main .h3 {
-  font-size: 24px;
-  margin-left: 12%;
-  position: relative;
-  margin-bottom: 5%;
-  font-size: 30px;
+.designTitle {
+  font-size: x-large;
   font-weight: bold;
-  margin-top: 1%;
+  text-indent: 1em;
+  padding-inline-start: 5%;
+  padding-inline-end: 5%;
 }
 
-.main .h3::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  color: #000;
-  border-bottom: 1px solid #000;
-  position: absolute;
-  left: -3%;
-  bottom: -50%;
+.designContainer {
+  padding: 5%;
 }
 
-.main_con {
-  width: 90%;
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  margin-left: 10%;
-}
-
-.main_con .left_img {
-  width: 100%;
-  margin-right: 5%;
-  position: relative;
-  border: 2px solid #000;
-  border-radius: 20px;
-}
-
-.main_con .left_img img {
-  width: 100%;
-}
-
-.main_con .left_img span {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.main_con .left_img span:nth-of-type(1) {
-  position: absolute;
-  bottom: 25%;
-  right: 4%;
-}
-
-.main_con .left_img span:nth-of-type(2) {
-  position: absolute;
-  bottom: 15%;
-  right: 4%;
-}
-
-.main_con .left_img span:nth-of-type(3) {
-  position: absolute;
-  bottom: 5%;
-  right: 4%;
-}
-
-.main_con .right_text {
-  width: 100%;
-  padding-left: 0;
-  padding-top: 5%;
-  font-weight: bold;
-}
-
-.main_con .right_text li {
-  margin-bottom: 15%;
-  font-size: 24px;
-  display: flex;
+.designImg {
+  justify-content: center;
   align-items: center;
-  width: 60%;
-  justify-content: space-between;
+  border: 2px solid black;
 }
 
-.main_con .right_text li input {
-  padding: 10px;
-  margin-left: 4%;
-  border-radius: 20px;
-  border: 2px solid #000;
-}
-
-.buy_cancle {
+.designImg img {
   width: 100%;
-  margin: 50px auto 0;
-  text-align: center;
 }
 
-.buy_cancle button {
-  padding: 15px 45px;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.5s;
-  border: 5px solid #000;
-  border-radius: 20px;
-  font-weight: bold;
+.detailCate {
+  font-size: larger;
+  padding-bottom: 5px;
 }
 
-.buy_cancle a {
-  padding: 15px 45px;
-  background: transparent;
-  cursor: pointer;
-  text-decoration: none;
-  color: #000;
-  border: 5px solid #000;
-  border-radius: 20px;
-  transition: 0.5s;
-  font-weight: bold;
-}
-
-.buy_cancle button:hover,
-.buy_cancle a:hover {
-  color: #fff;
-  background: #000;
-  border: 5px solid #d6d6d6;
-}
-
-.buy_cancle button:nth-of-type(1) {
-  margin-right: 5%;
-}
-
-.modal2 {
-  width: 40%;
-  position: absolute;
-  background: lightgrey;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  height: 50%;
-  border: 5px solid #000;
-  border-radius: 20px;
-}
-
-.modal2 h3 {
-  font-size: 36px;
-}
-
-.modal_buy_cancle {
-  width: 100%;
-  margin: 150px auto 0;
-  text-align: center;
-}
-
-.modal_buy_cancle button {
-  padding: 15px 45px;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.5s;
-  border: 5px solid #000;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.modal_buy_cancle button:hover {
-  color: #fff;
-  background: #000;
-  border: 5px solid #d6d6d6;
-}
-
-.modal_buy_cancle button:nth-of-type(1) {
-  margin-right: 5%;
-}
-
-.buySub {
-  --input-focus: #2d8cf0;
-  --font-color: #323232;
-  --font-color-sub: #666;
-  --bg-color: #fff;
-  --main-color: #323232;
+.cardContainer {
   width: 95%;
-  height: 350px;
-  padding: 10%;
-  background: lightgrey;
+  padding: 8%;
+  background: var(--desc-color);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 20px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
 }
 
-.inputForm {
-  padding-left: 50px;
+.cardName {
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
-.inputForm div {
-  padding: 5px;
+.cardAuthor {
+  font-size: 14px;
+  margin-bottom: 1em;
 }
 
-.inputForm div div {
-  width: 35%;
-  font-size: large;
-  display: inline-block;
+.priceContainer {
+  margin-top: 1em;
 }
 
-.inputForm div input {
-  width: 65%;
+.cardPrice {
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
 }
 
-.BuyBtn {
-  padding-left: 80px;
+.cardBuy {
+  text-align: center;
 }
+
+.buybtn {
+  width: 8.5em;
+}
+
+.examplebtn {
+  width: 18em;
+}
+
+/***************************/
+/**** DesignInfo-modal *****/
+/***************************/
+
+.buyModal {
+  position: absolute;
+  padding: 2em 5em 3em 5em;
+  background: var(--desc-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border: 3px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  border-radius: 10px;
+}
+
+.modalTitle {
+  padding-bottom: 3em;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.modalDesc {
+  padding-bottom: 3em;
+  font-size: 18px;
+}
+
+/***************************/
+/****** DesignExample ******/
+/***************************/
 
 .card {
   display: flex;
@@ -650,97 +561,18 @@ li {
   font-size: x-small;
 }
 
-.modaltop {
-  padding-top: 15%;
-  font-size: x-large;
-}
-
-.modalbtm {
-  padding-top: 3%;
-  font-size: x-large;
-  padding-bottom: 10%;
-}
-
-/***************************/
-/******* DesignInfo ********/
-/***************************/
-
-.designTitle {
-  font-size: x-large;
-  font-weight: bold;
-  text-indent: 1em;
-  padding-inline-start: 5%;
-  padding-inline-end: 5%;
-}
-
-.designContainer {
-  padding: 5%;
-}
-
-.designImg {
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-}
-
-.designImg img {
+.inputForm {
   width: 100%;
+  margin-bottom: 1em;
 }
 
-.descContainer {
-
+.inputForm div {
+  padding: 5px;
 }
 
-.detailCate {
-  font-size: larger;
-  padding-bottom: 5px;
-}
-
-.detailName {
-  font-size: x-large;
-  font-weight: bold;
-}
-
-.detailAuthor {
-  padding-bottom: 5px;
-}
-
-.detailSub {
-  --input-focus: #2d8cf0;
-  --font-color: #323232;
-  --font-color-sub: #666;
-  --bg-color: #fff;
-  --main-color: #323232;
-  width: 95%;
-  height: 350px;
-  padding: 8%;
-  background: #b072ab;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
-  border-radius: 5px;
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-}
-
-.detailDes {
-  padding-bottom: 5px;
-}
-
-.detailPrice {
-  padding-bottom: 5px;
-  font-weight: bold;
-  font-size: x-large;
-}
-
-.detailBuy {
-  display: inline-flex;
-}
-
-.card {
-  width: 100%;
+.inputForm div div {
+  font-size: large;
+  display: inline-block;
 }
 
 /***************************/

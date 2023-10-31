@@ -17,7 +17,7 @@ const Main = () => {
   const [category, setCategory] = useState("ALL");
 
   return (
-    <div className="mainContainer defaultContainer">
+    <div className="defaultContainer">
       <div className="container">
         {/* 카테고리 영역 */}
         <div className="main-cate">

@@ -10,8 +10,9 @@ import Main from "./pages/Main";
 import MainProfile from "./pages/MainProfile";
 import ProfileSell from "./pages/ProfileSell";
 import DesignInfo from "./pages/DesignInfo";
+import DesignExample from "./pages/DesignExample";
+import DesignBuy from "./pages/DesignBuy";
 import CardDetailMy from "./pages/CardDetailMy";
-import CardBuy from "./pages/CardBuypage";
 import Items from "./pages/Items";
 import MainpageProfile from "./pages/MainpageProfile";
 
@@ -32,7 +33,8 @@ function App() {
           <Route path="/designinfo" element={<DesignInfo />} />
           <Route path="/carddetailmy" element={<CardDetailMy />} />
           {/* 명함 구매 페이지 페이지 이동 */}
-          <Route path="/cardbuy" element={<CardBuy />} />
+          <Route path="/designexample" element={<DesignExample />} />
+          <Route path="/designbuy" element={<DesignBuy />} />
           {/* 명함 판매 목록 페이지 이동 */}
           <Route path="/items" element={<Items />} />
         </Routes>
