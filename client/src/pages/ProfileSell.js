@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
 
 const ProfileSell = () => {
   return (
-    <div className="profile">
+    <div className="defaultContainer">
       <Container>
         <ProductCard />
 

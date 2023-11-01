@@ -12,7 +12,7 @@ function CardDetailMy() {
   };
 
   return (
-    <div className="CardDetail">
+    <div className="defaultContainer">
       <div className="main">
         <div className="detailTitle">구매 정보</div>
         <hr />

@@ -5,7 +5,7 @@ import MenuButton from "../components/MenuButton";
 
 const Items = () => {
   return (
-    <div className="profile">
+    <div className="defaultContainer">
       <Container>
         <ProductCard />
         <h2>프로필 이름</h2>

@@ -9,7 +9,7 @@ const MainProfile = () => {
   const [category, setCategory] = useState("buy");
 
   return (
-    <div className="profile">
+    <div className="defaultContainer">
       <Container>
         <hr />
         <div className="profileImg">

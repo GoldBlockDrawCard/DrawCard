@@ -10,8 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Author1 from "../assets/images/author1.PNG";
 import Author2 from "../assets/images/author2.PNG";
-import DrawCard from "../components/DrawCard";
-import MainCard from "../components/MainCard";
+import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 
 const Main = () => {
   const [category, setCategory] = useState("ALL");
@@ -76,7 +75,10 @@ const Main = () => {
                       alt="main1"
                     />
                     <div className="main_profile_title">Whee</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -89,7 +91,10 @@ const Main = () => {
                       alt="main2"
                     />
                     <div className="main_profile_title">StrawberryMoon</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -102,7 +107,10 @@ const Main = () => {
                       alt="main1"
                     />
                     <div className="main_profile_title">Whee</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -115,7 +123,10 @@ const Main = () => {
                       alt="main2"
                     />
                     <div className="main_profile_title">StrawberryMoon</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -128,7 +139,10 @@ const Main = () => {
                       alt="main1"
                     />
                     <div className="main_profile_title">Whee</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -141,7 +155,10 @@ const Main = () => {
                       alt="main2"
                     />
                     <div className="main_profile_title">StrawberryMoon</div>
-                    <MainCard />
+                    <div className="main_sub_title">이 달의 추천 작가</div>
+                    <div className="main_arrow">
+                      <RightArrow />
+                    </div>
                   </Link>
                 </div>
               </SwiperSlide>
@@ -153,15 +170,15 @@ const Main = () => {
               <div className="new_profile">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
               </div>
 
@@ -170,15 +187,15 @@ const Main = () => {
               <div className="author_profile1">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art3} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art4} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
               </div>
 
@@ -187,15 +204,15 @@ const Main = () => {
               <div className="author_profile2">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art1} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal2} alt="profile" />
-                  <DrawCard />
+                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
                 </Link>
               </div>
             </div>
@@ -208,30 +225,30 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
           </>
@@ -243,15 +260,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -259,15 +276,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -275,15 +292,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
           </>
@@ -295,15 +312,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -311,15 +328,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -327,15 +344,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
           </>
@@ -347,15 +364,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -363,15 +380,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
 
@@ -379,15 +396,15 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <DrawCard />
+                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
               </Link>
             </div>
           </>
