@@ -1,108 +1,130 @@
-import { Link } from 'react-router-dom';
-import Logo from '../assets/images/Logo.png';
-import { useWeb3React } from "@web3-react/core";
-import { injected } from "./connecter";
-import { isNoEthereumObject } from "./error";
-import { useEffect, useState } from 'react';
-import { ethers } from 'ethers';
+import { Link } from "react-router-dom";
+import Logo from "../assets/images/Logo.png";
+import { useState } from "react";
+import WalletModal from "./WalletModal";
+import { useAccount, useDisconnect } from "wagmi";
+import HeaderButton from "./HeaderButton";
 
 const Header = () => {
-    const [balance, setBalance] = useState('');
-    const [etherBalance, setEtherBalance] = useState("");
+  // 지갑부분
+  const [walletModal, setWalletModal] = useState(false);
 
-    const {
-        // chainedId,
-        account,
-        active,
-        activate,
-        deactivate,
-        library
-      } = useWeb3React();
-    
-      const handdleConnect = () => {
-        if(active) {
-          deactivate();
-          return;
-        }
-        
-        activate(injected, (error) => {
-          if(isNoEthereumObject(error)) {
-            window.open('https://metamask.io/download.html');
-          }
-        });
-      }
-      
-      useEffect(() => {
-		if (account) {
-			library
-				?.getBalance(account)
-				.then((result: IResult) => setBalance(result._hex));
-		}
-	}, [account, library]);
+  const { disconnect } = useDisconnect();
+  const { address, isConnected } = useAccount();
 
-    useEffect(() => {
-        setEtherBalance(ethers.formatEther(Number(balance)))
-    }, [balance])
-    
-    return (
-        <div className='header'>
-            <div className='container'>
-            
-            <div className='contents d-flex'>
+  const showWalletModal = () => {
+    setWalletModal(true);
+    // 모달창 열려있을 때 스크롤 막기
+    document.body.style.overflow = "hidden";
+  };
 
-                {/* 로고 영역 */}
-                <div className='logo_area'>
-                    <Link to={"/"}>
-                        <img src={Logo} alt='Logo' className='logo'/>
-                    </Link>
-                </div>
+  const cancelModal = () => {
+    setWalletModal(false);
+    // 모달창 닫혔을 때 스크롤 활성
+    document.body.style.overflow = "unset";
+  };
 
-                {/* 검색 영역 */}
-                <div className='search_area'>
-                    <div className="input-container">
-                        <input type="text" name="text" className="input" placeholder="search..."/>
-                        <span className="icon"> 
-                            <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeWidth="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
-                        </span>
-                    </div>
-                </div>
+  return (
+    <div className="header">
+      <div className="container">
+        <div className="contents d-flex">
+          {/* 로고 영역 */}
+          <div className="logo_area">
+            <Link to={"/"}>
+              <img src={Logo} alt="Logo" className="logo" />
+            </Link>
+          </div>
 
-                {/* 메뉴 영역 */}
-                <div className='menu_area'>
-                    {/* 지갑 연결 및 연결 해제 */}
-                    <a className="fancy" href="#" onClick={handdleConnect}>
-                        <span className="top-key"></span>
-                        <span className="text">{active ? 'disconnet\n' + etherBalance + 'EH' :'wallet connet'}</span>
-                        <span className="bottom-key-1"></span>
-                        <span className="bottom-key-2"></span>
-                    </a>
-                    
-                    {/* 지갑이 연결된 상태에서 프로필 페이지로 이동 */}
-                    {active ? 
-                    <>
-                        <Link to='/mainprofile' className="fancy" href="#" >
-                            <span className="top-key"></span>
-                            <span className="text">profile</span>
-                            <span className="bottom-key-1"></span>
-                            <span className="bottom-key-2"></span>
-                        </Link>
-                    </>:
-                    <>
-                        {/* 지갑이 연결되지 않은 상태에서 지갑 연결 */}
-                        <div onClick={handdleConnect} className="fancy" href="#" >
-                            <span className="top-key"></span>
-                            <span className="text">profile</span>
-                            <span className="bottom-key-1"></span>
-                            <span className="bottom-key-2"></span>
-                        </div>
-                    </>
-                    }
-
-                </div>
+          {/* 검색 영역 */}
+          <div className="search_area">
+            <div className="input-container">
+              <input
+                type="text"
+                name="text"
+                className="input"
+                placeholder="search..."
+              />
+              <span className="icon">
+                <svg
+                  width="19px"
+                  height="19px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeWidth="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      opacity="1"
+                      d="M14 5H20"
+                      stroke="#000"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                    <path
+                      opacity="1"
+                      d="M14 8H17"
+                      stroke="#000"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                    <path
+                      d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2"
+                      stroke="#000"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                    <path
+                      opacity="1"
+                      d="M22 22L20 20"
+                      stroke="#000"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </span>
             </div>
+          </div>
+
+          {/* 메뉴 영역 */}
+          {/* 지갑이 연결된 상태 */}
+          {isConnected ? (
+            <div className="menu_area">
+              <div onClick={disconnect} className="fancy" href="#">
+                <HeaderButton name="Wallet Disconnect" />
+              </div>
+              <Link to="/mainprofile" className="fancy" href="#">
+                <HeaderButton name="profile" />
+              </Link>
             </div>
+          ) : (
+            <div className="menu_area">
+              {/* 지갑이 연결되지 않은 상태 */}
+              <div onClick={showWalletModal} className="fancy" href="#">
+                <HeaderButton name="Wallet Connet" />
+              </div>
+              <div onClick={showWalletModal} className="fancy" href="#">
+                <HeaderButton name="profile" />
+              </div>
+            </div>
+          )}
         </div>
-    );
-}
+        {/* 지갑 모달창 */}
+        {walletModal && <WalletModal cancelModal={cancelModal} />}
+      </div>
+    </div>
+  );
+};
 
 export default Header;

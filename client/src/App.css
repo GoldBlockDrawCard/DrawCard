@@ -41,7 +41,7 @@ li {
 }
 
 /***************************/
-/********* Header *********/
+/********* Header **********/
 /***************************/
 
 .header {
@@ -225,6 +225,41 @@ li {
   width: 200px;
   height: 30px;
   justify-content: center;
+}
+
+/***************************/
+/** Header - WalletModal ***/
+/***************************/
+
+.walletModal {
+  position: absolute;
+  padding: 2em 3em;
+  background: var(--desc-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  border-radius: 10px;
+}
+
+.walletTitle {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.walletbtn {
+  background-color: var(--input-focus);
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  padding: 0.5em 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.walletbtnName {
+  font-size: large;
 }
 
 /***************************/
