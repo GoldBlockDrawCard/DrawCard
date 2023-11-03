@@ -15,6 +15,99 @@ import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 const Main = () => {
   const [category, setCategory] = useState("ALL");
 
+  const data = [
+    {
+      _id: 0,
+      wallet: "0x1234",
+      regiName: "StrawberryMoon",
+      cardName: "card",
+      cardCate: "normal",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/normalDC1.PNG",
+    },
+    {
+      _id: 1,
+      wallet: "0x1234",
+      regiName: "StrawberryMoon",
+      cardName: "card",
+      cardCate: "normal",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/normalDC2.PNG",
+    },
+    {
+      _id: 2,
+      wallet: "0x1234",
+      regiName: "StrawberryMoon",
+      cardName: "card",
+      cardCate: "art",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/artDC1.PNG",
+    },
+    {
+      _id: 3,
+      wallet: "0x1234",
+      regiName: "Whee",
+      cardName: "card",
+      cardCate: "art",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/artDC2.PNG",
+    },
+    {
+      _id: 4,
+      wallet: "0x1234",
+      regiName: "Whee",
+      cardName: "card",
+      cardCate: "art",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/artDC3.PNG",
+    },
+    {
+      _id: 5,
+      wallet: "0x1234",
+      regiName: "Whee",
+      cardName: "card",
+      cardCate: "art",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/artDC4.PNG",
+    },
+    {
+      _id: 6,
+      wallet: "0x1234",
+      regiName: "author",
+      cardName: "card",
+      cardCate: "normal",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/normalDC1.PNG",
+    },
+    {
+      _id: 7,
+      wallet: "0x1234",
+      regiName: "author",
+      cardName: "card",
+      cardCate: "normal",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/normalDC1.PNG",
+    },
+    {
+      _id: 8,
+      wallet: "0x1234",
+      regiName: "author",
+      cardName: "card",
+      cardCate: "normal",
+      cardDesc: "card desc",
+      cardPrice: "10",
+      cardImg: "../assets/images/normalDC1.PNG",
+    },
+  ];
+
   return (
     <div className="defaultContainer">
       <div className="container">
@@ -170,15 +263,24 @@ const Main = () => {
               <div className="new_profile">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
               </div>
 
@@ -187,15 +289,24 @@ const Main = () => {
               <div className="author_profile1">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art2} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art3} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Art4} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
               </div>
 
@@ -204,15 +315,24 @@ const Main = () => {
               <div className="author_profile2">
                 <Link to="/designinfo" className="new_content">
                   <img src={Art1} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal1} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
                 <Link to="/designinfo" className="new_content">
                   <img src={Normal2} alt="profile" />
-                  <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                  <p className="cardtitle">
+                    NickName<span>Job</span>
+                    <span>Company</span>
+                  </p>
                 </Link>
               </div>
             </div>
@@ -225,30 +345,48 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
 
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
           </>
@@ -260,15 +398,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
 
@@ -276,15 +423,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
 
@@ -292,15 +448,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
           </>
@@ -309,50 +474,28 @@ const Main = () => {
         {category === "ART" && (
           <>
             {/* 작가 프로필 홍보 영역 */}
-            <div className="cate_profile">
-              <Link to="/designinfo" className="new_content">
-                <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-              <Link to="/designinfo" className="new_content">
-                <img src={Art3} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-              <Link to="/designinfo" className="new_content">
-                <img src={Art4} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-            </div>
 
-            {/* 작가 이름 및 업로드 프로필 영역 */}
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art3} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art4} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-            </div>
-
-            {/* 작가 이름 및 업로드 프로필 영역 */}
-            <div className="cate_profile">
-              <Link to="/designinfo" className="new_content">
-                <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-              <Link to="/designinfo" className="new_content">
-                <img src={Art3} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
-              </Link>
-              <Link to="/designinfo" className="new_content">
-                <img src={Art4} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
           </>
@@ -364,15 +507,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
 
@@ -380,15 +532,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
 
@@ -396,15 +557,24 @@ const Main = () => {
             <div className="cate_profile">
               <Link to="/designinfo" className="new_content">
                 <img src={Art1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Art2} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
               <Link to="/designinfo" className="new_content">
                 <img src={Normal1} alt="profile" />
-                <p className="cardtitle">NickName<span>Job</span><span>Company</span></p>
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
               </Link>
             </div>
           </>
