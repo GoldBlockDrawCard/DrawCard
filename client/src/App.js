@@ -1,4 +1,7 @@
 import "./App.css";
+import "swiper/css"; //basic
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Route, Routes } from "react-router-dom";
 
 import { WagmiConfig } from "wagmi";
