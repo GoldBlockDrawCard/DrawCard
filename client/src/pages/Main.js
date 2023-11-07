@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import Author1 from "assets/images/author1.PNG";
-import Author2 from "assets/images/author2.PNG";
 import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
@@ -10,7 +8,7 @@ import { Navigation, Pagination, Scrollbar } from "swiper";
 const Main = () => {
   const [category, setCategory] = useState("ALL");
 
-  const data = [
+  const cardData = [
     {
       _id: 0,
       wallet: "0x1234",
@@ -103,6 +101,27 @@ const Main = () => {
     },
   ];
 
+  const designerData = [
+    {
+      _id: 0,
+      wallet: "0x1234",
+      designerName: "Whee",
+      backgroundImg: require("assets/images/designer01.PNG"),
+    },
+    {
+      _id: 1,
+      wallet: "0x1234",
+      designerName: "StrawberryMoon",
+      backgroundImg: require("assets/images/designer02.PNG"),
+    },
+    {
+      _id: 2,
+      wallet: "0x1234",
+      designerName: "Cyber",
+      backgroundImg: require("assets/images/designer03.jpg"),
+    },
+  ];
+
   return (
     <div className="defaultContainer">
       <div className="container">
@@ -162,70 +181,24 @@ const Main = () => {
               scrollbar={{ draggable: true }}
               pagination={{ clickable: true }}
             >
-              <SwiperSlide>
-                <div className="main_profile">
-                  <Link to="/mainpageprofile" className="main_content">
-                    <img
-                      className="main_profileImg"
-                      src={Author1}
-                      alt="main1"
-                    />
-                    <div className="main_profile_title">Whee</div>
-                    <div className="main_sub_title">이 달의 추천 작가</div>
-                    <div className="main_arrow">
-                      <RightArrow />
-                    </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main_profile">
-                  <Link to="/mainprofile" className="main_content">
-                    <img
-                      className="main_profileImg"
-                      src={Author2}
-                      alt="main2"
-                    />
-                    <div className="main_profile_title">StrawberryMoon</div>
-                    <div className="main_sub_title">이 달의 추천 작가</div>
-                    <div className="main_arrow">
-                      <RightArrow />
-                    </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main_profile">
-                  <Link to="/mainpageprofile" className="main_content">
-                    <img
-                      className="main_profileImg"
-                      src={Author1}
-                      alt="main1"
-                    />
-                    <div className="main_profile_title">Whee</div>
-                    <div className="main_sub_title">이 달의 추천 작가</div>
-                    <div className="main_arrow">
-                      <RightArrow />
-                    </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main_profile">
-                  <Link to="/mainprofile" className="main_content">
-                    <img
-                      className="main_profileImg"
-                      src={Author2}
-                      alt="main2"
-                    />
-                    <div className="main_profile_title">StrawberryMoon</div>
-                    <div className="main_sub_title">이 달의 추천 작가</div>
-                    <div className="main_arrow">
-                      <RightArrow />
-                    </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
+              {designerData.map((data) => (
+                <SwiperSlide key={data._id}>
+                  <div className="main_profile">
+                    <Link to="/desingerprofile" className="main_content">
+                      <img
+                        className="main_profileImg"
+                        src={data.backgroundImg}
+                        alt="main1"
+                      />
+                      <div className="main_profile_title">{data.designerName}</div>
+                      <div className="main_sub_title">이 달의 추천 작가</div>
+                      <div className="main_arrow">
+                        <RightArrow />
+                      </div>
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              ))}
             </Swiper>
 
             <div>
@@ -246,8 +219,8 @@ const Main = () => {
                   },
                 }}
               >
-                {data
-                  .filter((card) => card._id >= (data.length - 6) )
+                {cardData
+                  .filter((card) => card._id >= cardData.length - 6)
                   .map((card) => (
                     <SwiperSlide>
                       <Link
@@ -282,7 +255,7 @@ const Main = () => {
                   },
                 }}
               >
-                {data
+                {cardData
                   .filter((card) => card.regiName === "Whee")
                   .map((card) => (
                     <SwiperSlide>
@@ -318,7 +291,7 @@ const Main = () => {
                   },
                 }}
               >
-                {data
+                {cardData
                   .filter((card) => card.regiName === "StrawberryMoon")
                   .map((card) => (
                     <SwiperSlide>
@@ -342,86 +315,103 @@ const Main = () => {
 
         {category === "BEST" && (
           <div className="cate_profile">
-          {/* 작가 프로필 홍보 영역 */}
-          {data
-            .filter((card) => card.cardCate === "best" )
-            .map((card) => (
-              <Link
-                to="/designinfo"
-                className="new_content col-3"
-                key={card._id}
-              >
-                <img src={card.cardImg} alt="profile" />
-                <p className="cardtitle">
-                  NickName<span>Job</span>
-                  <span>Company</span>
-                </p>
-              </Link>
-            )) === "" ? (<p>있음</p>) : (<p>없음</p>)}
-        </div>
+            {/* 작가 프로필 홍보 영역 */}
+            {cardData
+              .filter((card) => card.cardCate === "best") == "" ? (
+              <p>현재 카테고리에 등록된 상품이 없습니다.</p>
+            ) : (
+              cardData
+                .filter((card) => card.cardCate === "best")
+                .map((card) => (
+                  <Link
+                    to="/designinfo"
+                    className="new_content col-3"
+                    key={card._id}
+                  >
+                    <img src={card.cardImg} alt="profile" />
+                    <p className="cardtitle">
+                      NickName<span>Job</span>
+                      <span>Company</span>
+                    </p>
+                  </Link>
+                ))
+            )}
+          </div>
         )}
 
         {category === "NORMAL" && (
           <div className="cate_profile">
-          {/* 작가 프로필 홍보 영역 */}
-          {data
-            .filter((card) => card.cardCate === "best")
-            .map((card) => (
-              <Link
-                to="/designinfo"
-                className="new_content col-3"
-                key={card._id}
-              >
-                <img src={card.cardImg} alt="profile" />
-                <p className="cardtitle">
-                  NickName<span>Job</span>
-                  <span>Company</span>
-                </p>
-              </Link>
-            ))  === "" ? (<p>있음</p>) : (<p>없음</p>)}
-        </div>
+            {/* 작가 프로필 홍보 영역 */}
+            {cardData.filter((card) => card.cardCate === "normal") == "" ? (
+              <p>현재 카테고리에 등록된 상품이 없습니다.</p>
+            ) : (
+              cardData
+                .filter((card) => card.cardCate === "normal")
+                .map((card) => (
+                  <Link
+                    to="/designinfo"
+                    className="new_content col-3"
+                    key={card._id}
+                  >
+                    <img src={card.cardImg} alt="profile" />
+                    <p className="cardtitle">
+                      NickName<span>Job</span>
+                      <span>Company</span>
+                    </p>
+                  </Link>
+                ))
+            )}
+          </div>
         )}
 
         {category === "ART" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {data
-              .filter((card) => card.cardCate === "art")
-              .map((card) => (
-                <Link
-                  to="/designinfo"
-                  className="new_content col-3"
-                  key={card._id}
-                >
-                  <img src={card.cardImg} alt="profile" />
-                  <p className="cardtitle">
-                    NickName<span>Job</span>
-                    <span>Company</span>
-                  </p>
-                </Link>
-              ))}
+            {cardData.filter((card) => card.cardCate === "art") == "" ? (
+              <p>현재 카테고리에 등록된 상품이 없습니다.</p>
+            ) : (
+              cardData
+                .filter((card) => card.cardCate === "art")
+                .map((card) => (
+                  <Link
+                    to="/designinfo"
+                    className="new_content col-3"
+                    key={card._id}
+                  >
+                    <img src={card.cardImg} alt="profile" />
+                    <p className="cardtitle">
+                      NickName<span>Job</span>
+                      <span>Company</span>
+                    </p>
+                  </Link>
+                ))
+            )}
           </div>
         )}
 
         {category === "EFFECT" && (
           <div className="cate_profile">
-          {/* 작가 프로필 홍보 영역 */}
-          { data
-            .filter((card) => card.cardCate === "effect")
-            .map((card) => (
-              <Link
-                to="/designinfo"
-                className="new_content col-3"
-                key={card._id}
-              >
-                <img src={card.cardImg} alt="profile" />
-                <p className="cardtitle">
-                  NickName<span>Job</span>
-                  <span>Company</span>
-                </p>
-              </Link>
-            )) === "" ? (<p>있음</p>) : (<p>없음</p>)}
-        </div>
+            {/* 작가 프로필 홍보 영역 */}
+            {cardData.filter((card) => card.cardCate === "effect") == "" ? (
+              <p>현재 카테고리에 등록된 상품이 없습니다.</p>
+            ) : (
+              cardData
+                .filter((card) => card.cardCate === "effect")
+                .map((card) => (
+                  <Link
+                    to="/designinfo"
+                    className="new_content col-3"
+                    key={card._id}
+                  >
+                    <img src={card.cardImg} alt="profile" />
+                    <p className="cardtitle">
+                      NickName<span>Job</span>
+                      <span>Company</span>
+                    </p>
+                  </Link>
+                ))
+            )}
+          </div>
         )}
       </div>
     </div>
