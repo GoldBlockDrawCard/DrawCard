@@ -17,7 +17,7 @@ import DesignExample from "./pages/DesignExample";
 import DesignBuy from "./pages/DesignBuy";
 import CardDetailMy from "./pages/CardDetailMy";
 import Items from "./pages/Items";
-import MainpageProfile from "./pages/MainpageProfile";
+import DesignerProfile from "./pages/DesignerProfile";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="/" element={<Main />} />
           {/* 프로필 페이지 이동 */}
           <Route path="/mainprofile" element={<MainProfile />} />
-          <Route path="/mainpageprofile" element={<MainpageProfile />} />
+          <Route path="/desingerprofile" element={<DesignerProfile />} />
           {/* 프로필 구매 페이지 페이지 이동 */}
           <Route path="/profilesell" element={<ProfileSell />} />
           {/* 명함 상세 페이지 페이지 이동 */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Profile from "../assets/images/author1.PNG";
+import Profile from "../assets/images/designer01.PNG";
 import { useState } from "react";
 import Example1 from "../assets/images/ex1.png";
 import Example2 from "../assets/images/ex2.png";
@@ -10,7 +10,7 @@ import Art3 from "../assets/images/artDC3.PNG";
 import Art4 from "../assets/images/artDC4.PNG";
 import { Link } from "react-router-dom";
 
-const MainpageProfile = () => {
+const DesignerProfile = () => {
   const [category, setCategory] = useState("buy");
 
   return (
@@ -81,4 +81,4 @@ const MainpageProfile = () => {
   );
 };
 
-export default MainpageProfile;
+export default DesignerProfile;
