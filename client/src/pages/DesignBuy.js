@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import artDC2 from "../assets/images/artDC2.PNG";
 
-function DesignBuy() {
+const DesignBuy = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
   const [userPosition, setPosition] = useState("");

@@ -4,7 +4,7 @@ import artDC2 from "../assets/images/draw_card.png";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
-function CardDetailMy() {
+const CardDetailMy = () => {
   const onDownloadBtn = () => {
     domtoimage.toBlob(document.querySelector(".card")).then((blob) => {
       saveAs(blob, "draw_card.png");

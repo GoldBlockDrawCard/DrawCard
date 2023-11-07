@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import artDC2 from "../assets/images/artDC2.PNG";
 
-function DesignInfo() {
+const DesignInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {

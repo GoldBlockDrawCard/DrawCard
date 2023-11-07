@@ -8,8 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
+require('dotenv').config();
 
-function getLibrary(provider) {
+const getLibrary = (provider) => {
   const library = new Web3Provider(provider, "any");
   return library;
 }

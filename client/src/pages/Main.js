@@ -1,12 +1,41 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useParams, useEffect } from "react";
 
 import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
+import MenuCategory from '../components/MenuCategory'
 
 const Main = () => {
-  const [category, setCategory] = useState("ALL");
+  const [category, setCategory] = useState([]);
+  // const { categoryID } = useParams();
+  const dbURL = process.env.MONGO_URI;
+
+  // useEffect(() => {
+  //   fetch(`localhost:5000/api/cards`, {
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     method: 'get',
+  //   })
+  //   .then(respones => respones.json())
+  //   .then(data => {
+  //     setCategory(data);
+  //   });
+  // }, [])
+
+  // useEffect(() => {
+  //   fetch(`http://127.0.0.1:5000/api/cards`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     // body: JSON.stringify(data)
+  //   })
+  //     .then((response) => console.log(response))
+  //     .catch((error) => console.log(error));
+  // }, [])
+
 
   const cardData = [
     {
@@ -167,7 +196,12 @@ const Main = () => {
           >
             <span>EFFECT</span>
           </button>
+          {/* <MenuCategory 
+            categoryID={categoryID}
+            data={category}
+            /> */}
         </div>
+        
 
         {category === "ALL" && (
           <>
@@ -222,7 +256,7 @@ const Main = () => {
                 {cardData
                   .filter((card) => card._id >= cardData.length - 6)
                   .map((card) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={card._id}>
                       <Link
                         to="/designinfo"
                         className="new_content"
@@ -258,7 +292,7 @@ const Main = () => {
                 {cardData
                   .filter((card) => card.regiName === "Whee")
                   .map((card) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={card._id}>
                       <Link
                         to="/designinfo"
                         className="new_content"
@@ -294,7 +328,7 @@ const Main = () => {
                 {cardData
                   .filter((card) => card.regiName === "StrawberryMoon")
                   .map((card) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={card._id}>
                       <Link
                         to="/designinfo"
                         className="new_content"

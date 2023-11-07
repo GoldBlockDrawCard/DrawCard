@@ -19,7 +19,7 @@ import CardDetailMy from "./pages/CardDetailMy";
 import Items from "./pages/Items";
 import DesignerProfile from "./pages/DesignerProfile";
 
-function App() {
+const App = () => {
   return (
     <div className="wrap-container">
       <WagmiConfig config={config}>
