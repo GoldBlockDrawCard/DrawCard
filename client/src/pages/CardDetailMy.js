@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import artDC2 from "../assets/images/draw_card.png";
+import artDC2 from "../assets/images/ex1.png";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
 const CardDetailMy = () => {
   const onDownloadBtn = () => {
     domtoimage.toBlob(document.querySelector(".card")).then((blob) => {
-      saveAs(blob, "draw_card.png");
+      saveAs(blob, "ex1.png");
     });
   };
 

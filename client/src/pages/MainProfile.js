@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Example from "../assets/images/draw_card.png";
+import Example from "../assets/images/ex1.png";
 import Profile from "../assets/images/defualt.png";
 import Change from "../assets/images/change.png";
 
