@@ -16,7 +16,7 @@ router.get("/cardid/:cardid", (req, res) => {
   Card.findOneByCardid(req.params._id)
     .then((card) => {
       if (!card) return res.status(404).send({ err: "Card not found" });
-      res.send(`findOne successfully: ${card}`);
+      res.send(card);
     })
     .catch((err) => res.status(500).send(err));
 });

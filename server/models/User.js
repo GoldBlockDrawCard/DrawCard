@@ -6,7 +6,8 @@ const objectId = mongoose.Schema.Types.ObjectId;
 const userSchema = new Schema({
   _id: { type: objectId, auto: true },
   wallet: { type: String, required: true },
-  regiName: { type: String, maxlength: 20 }
+  regiName: { type: String, maxlength: 20 },
+  profileImg: { type: String, maxlength: 20 }
 }, {
   versionKey: false
 });
