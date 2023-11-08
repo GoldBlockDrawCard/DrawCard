@@ -4,38 +4,36 @@ import { useState, useParams, useEffect } from "react";
 import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
-import MenuCategory from '../components/MenuCategory'
+import MenuCategory from "../components/MenuCategory";
 
 const Main = () => {
   const [category, setCategory] = useState([]);
   // const { categoryID } = useParams();
-  const dbURL = process.env.MONGO_URI;
+  const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(`localhost:5000/api/cards`, {
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     method: 'get',
-  //   })
-  //   .then(respones => respones.json())
-  //   .then(data => {
-  //     setCategory(data);
-  //   });
-  // }, [])
+  const getData = async () => {
+    const res = await fetch(`http://localhost:4000/api/cards`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 
-  // useEffect(() => {
-  //   fetch(`http://127.0.0.1:5000/api/cards`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     // body: JSON.stringify(data)
-  //   })
-  //     .then((response) => console.log(response))
-  //     .catch((error) => console.log(error));
-  // }, [])
+    const initData = res.map((card) => {
+      return {
+        id: card._id,
+        category: card.cardCate,
+        userWallet: card.wallet,
+        designer: card.regiName,
+        designDesc: card.cardDesc,
+        price: card.cardPrice,
+        img: card.cardImg,
+      };
+    });
 
+    setData(initData);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const cardData = [
     {
@@ -201,7 +199,6 @@ const Main = () => {
             data={category}
             /> */}
         </div>
-        
 
         {category === "ALL" && (
           <>
@@ -224,7 +221,9 @@ const Main = () => {
                         src={data.backgroundImg}
                         alt="main1"
                       />
-                      <div className="main_profile_title">{data.designerName}</div>
+                      <div className="main_profile_title">
+                        {data.designerName}
+                      </div>
                       <div className="main_sub_title">이 달의 추천 작가</div>
                       <div className="main_arrow">
                         <RightArrow />
@@ -350,8 +349,7 @@ const Main = () => {
         {category === "BEST" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {cardData
-              .filter((card) => card.cardCate === "best") == "" ? (
+            {cardData.filter((card) => card.cardCate === "best") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
               cardData
@@ -376,18 +374,18 @@ const Main = () => {
         {category === "NORMAL" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {cardData.filter((card) => card.cardCate === "normal") == "" ? (
+            {data.filter((card) => card.category === "normal") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
-              cardData
-                .filter((card) => card.cardCate === "normal")
+              data
+                .filter((card) => card.category === "normal")
                 .map((card) => (
                   <Link
                     to="/designinfo"
                     className="new_content col-3"
-                    key={card._id}
+                    key={card.id}
                   >
-                    <img src={card.cardImg} alt="profile" />
+                    <img src={card.img} alt="profile" />
                     <p className="cardtitle">
                       NickName<span>Job</span>
                       <span>Company</span>
