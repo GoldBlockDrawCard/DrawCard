@@ -9,14 +9,15 @@ import MenuCategory from "../components/MenuCategory";
 const Main = () => {
   const [category, setCategory] = useState([]);
   // const { categoryID } = useParams();
-  const [data, setData] = useState([]);
+  const [cardDB, setCardDB] = useState([]);
+  const [userDB, setUserDB] = useState([]);
 
   const getData = async () => {
     const res = await fetch(`http://localhost:4000/api/cards`)
       .then((response) => response.json())
       .catch((error) => console.log(error));
 
-    const initData = res.map((card) => {
+    const initCardData = res.map((card) => {
       return {
         id: card._id,
         category: card.cardCate,
@@ -28,126 +29,30 @@ const Main = () => {
       };
     });
 
-    setData(initData);
+    setCardDB(initCardData);
+  };
+
+  const getUserData = async () => {
+    const res = await fetch(`http://localhost:4000/api/users`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+
+    const initUserData = res.map((user) => {
+      return {
+        id: user._id,
+        userWallet: user.wallet,
+        designer: user.regiName,
+        img: user.profileImg,
+      };
+    });
+
+    setUserDB(initUserData);
   };
 
   useEffect(() => {
     getData();
+    getUserData();
   }, []);
-
-  const cardData = [
-    {
-      _id: 0,
-      wallet: "0x1234",
-      regiName: "StrawberryMoon",
-      cardName: "card",
-      cardCate: "normal",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/normalDC1.PNG"),
-    },
-    {
-      _id: 1,
-      wallet: "0x1234",
-      regiName: "StrawberryMoon",
-      cardName: "card",
-      cardCate: "normal",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/normalDC2.PNG"),
-    },
-    {
-      _id: 2,
-      wallet: "0x1234",
-      regiName: "StrawberryMoon",
-      cardName: "card",
-      cardCate: "art",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/artDC1.png"),
-    },
-    {
-      _id: 3,
-      wallet: "0x1234",
-      regiName: "Whee",
-      cardName: "card",
-      cardCate: "art",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/artDC2.PNG"),
-    },
-    {
-      _id: 4,
-      wallet: "0x1234",
-      regiName: "Whee",
-      cardName: "card",
-      cardCate: "art",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/artDC3.PNG"),
-    },
-    {
-      _id: 5,
-      wallet: "0x1234",
-      regiName: "Whee",
-      cardName: "card",
-      cardCate: "art",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/artDC4.PNG"),
-    },
-    {
-      _id: 6,
-      wallet: "0x1234",
-      regiName: "author",
-      cardName: "card",
-      cardCate: "normal",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/normalDC1.PNG"),
-    },
-    {
-      _id: 7,
-      wallet: "0x1234",
-      regiName: "author",
-      cardName: "card",
-      cardCate: "normal",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/normalDC1.PNG"),
-    },
-    {
-      _id: 8,
-      wallet: "0x1234",
-      regiName: "author",
-      cardName: "card",
-      cardCate: "normal",
-      cardDesc: "card desc",
-      cardPrice: "10",
-      cardImg: require("assets/images/normalDC1.PNG"),
-    },
-  ];
-
-  const designerData = [
-    {
-      _id: 0,
-      wallet: "0x1234",
-      designerName: "Whee",
-      backgroundImg: require("assets/images/designer01.PNG"),
-    },
-    {
-      _id: 1,
-      wallet: "0x1234",
-      designerName: "StrawberryMoon",
-      backgroundImg: require("assets/images/designer02.PNG"),
-    },
-    {
-      _id: 2,
-      wallet: "0x1234",
-      designerName: "Cyber",
-      backgroundImg: require("assets/images/designer03.jpg"),
-    },
-  ];
 
   return (
     <div className="defaultContainer">
@@ -212,17 +117,17 @@ const Main = () => {
               scrollbar={{ draggable: true }}
               pagination={{ clickable: true }}
             >
-              {designerData.map((data) => (
-                <SwiperSlide key={data._id}>
+              {userDB.map((data) => (
+                <SwiperSlide key={data.id}>
                   <div className="main_profile">
                     <Link to="/desingerprofile" className="main_content">
                       <img
                         className="main_profileImg"
-                        src={data.backgroundImg}
+                        src={require(`assets/images/${data.img}.PNG`)}
                         alt="main1"
                       />
                       <div className="main_profile_title">
-                        {data.designerName}
+                        {data.designer}
                       </div>
                       <div className="main_sub_title">이 달의 추천 작가</div>
                       <div className="main_arrow">
@@ -252,16 +157,14 @@ const Main = () => {
                   },
                 }}
               >
-                {cardData
-                  .filter((card) => card._id >= cardData.length - 6)
+                {cardDB
                   .map((card) => (
-                    <SwiperSlide key={card._id}>
+                    <SwiperSlide key={card.id}>
                       <Link
                         to="/designinfo"
                         className="new_content"
-                        key={card._id}
                       >
-                        <img src={card.cardImg} alt="profile" />
+                        <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                         <p className="cardtitle">
                           NickName<span>Job</span>
                           <span>Company</span>
@@ -288,16 +191,16 @@ const Main = () => {
                   },
                 }}
               >
-                {cardData
-                  .filter((card) => card.regiName === "Whee")
+                {cardDB
+                  .filter((card) => card.designer === "Whee")
                   .map((card) => (
-                    <SwiperSlide key={card._id}>
+                    <SwiperSlide key={card.id}>
                       <Link
                         to="/designinfo"
                         className="new_content"
-                        key={card._id}
+                        key={card.id}
                       >
-                        <img src={card.cardImg} alt="profile" />
+                        <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                         <p className="cardtitle">
                           NickName<span>Job</span>
                           <span>Company</span>
@@ -324,16 +227,16 @@ const Main = () => {
                   },
                 }}
               >
-                {cardData
-                  .filter((card) => card.regiName === "StrawberryMoon")
+                {cardDB
+                  .filter((card) => card.designer === "StrawberryMoon")
                   .map((card) => (
-                    <SwiperSlide key={card._id}>
+                    <SwiperSlide key={card.id}>
                       <Link
                         to="/designinfo"
                         className="new_content"
-                        key={card._id}
+                        key={card.id}
                       >
-                        <img src={card.cardImg} alt="profile" />
+                        <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                         <p className="cardtitle">
                           NickName<span>Job</span>
                           <span>Company</span>
@@ -349,18 +252,18 @@ const Main = () => {
         {category === "BEST" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {cardData.filter((card) => card.cardCate === "best") == "" ? (
+            {cardDB.filter((card) => card.category === "best") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
-              cardData
-                .filter((card) => card.cardCate === "best")
+              cardDB
+                .filter((card) => card.category === "best")
                 .map((card) => (
                   <Link
                     to="/designinfo"
                     className="new_content col-3"
-                    key={card._id}
+                    key={card.id}
                   >
-                    <img src={card.cardImg} alt="profile" />
+                    <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                     <p className="cardtitle">
                       NickName<span>Job</span>
                       <span>Company</span>
@@ -374,10 +277,10 @@ const Main = () => {
         {category === "NORMAL" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {data.filter((card) => card.category === "normal") == "" ? (
+            {cardDB.filter((card) => card.category === "normal") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
-              data
+              cardDB
                 .filter((card) => card.category === "normal")
                 .map((card) => (
                   <Link
@@ -385,7 +288,7 @@ const Main = () => {
                     className="new_content col-3"
                     key={card.id}
                   >
-                    <img src={card.img} alt="profile" />
+                    <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                     <p className="cardtitle">
                       NickName<span>Job</span>
                       <span>Company</span>
@@ -399,18 +302,18 @@ const Main = () => {
         {category === "ART" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {cardData.filter((card) => card.cardCate === "art") == "" ? (
+            {cardDB.filter((card) => card.category === "art") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
-              cardData
-                .filter((card) => card.cardCate === "art")
+              cardDB
+                .filter((card) => card.category === "art")
                 .map((card) => (
                   <Link
                     to="/designinfo"
                     className="new_content col-3"
-                    key={card._id}
+                    key={card.id}
                   >
-                    <img src={card.cardImg} alt="profile" />
+                    <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                     <p className="cardtitle">
                       NickName<span>Job</span>
                       <span>Company</span>
@@ -424,18 +327,18 @@ const Main = () => {
         {category === "EFFECT" && (
           <div className="cate_profile">
             {/* 작가 프로필 홍보 영역 */}
-            {cardData.filter((card) => card.cardCate === "effect") == "" ? (
+            {cardDB.filter((card) => card.category === "effect") == "" ? (
               <p>현재 카테고리에 등록된 상품이 없습니다.</p>
             ) : (
-              cardData
-                .filter((card) => card.cardCate === "effect")
+              cardDB
+                .filter((card) => card.category === "effect")
                 .map((card) => (
                   <Link
                     to="/designinfo"
                     className="new_content col-3"
-                    key={card._id}
+                    key={card.id}
                   >
-                    <img src={card.cardImg} alt="profile" />
+                    <img src={require(`assets/images/${card.img}.PNG`)} alt="profile" />
                     <p className="cardtitle">
                       NickName<span>Job</span>
                       <span>Company</span>
