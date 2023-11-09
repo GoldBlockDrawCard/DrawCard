@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import artDC2 from "../assets/images/artDC2.PNG";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const DesignExample = () => {
   const [userName, setUserName] = useState("");
   const [userPosition, setPosition] = useState("");
   const [userAttach, setAttach] = useState("");
+  const location = useLocation();
+  const naviagte = useNavigate();
 
   const nickHandler = (e) => {
     setUserName(e.target.value);
@@ -30,7 +31,7 @@ const DesignExample = () => {
 
           <div className="designImg col-5 d-flex">
             <div className="card">
-              <img src={artDC2} alt="이미지" />
+              <img src={require(`assets/images/${location.state.img}.PNG`)} alt="이미지" />
               <div className="card_name">{userName}</div>
               <div className="card_position">{userPosition}</div>
               <div className="card_attach">{userAttach}</div>
@@ -41,7 +42,7 @@ const DesignExample = () => {
 
           <div className="descContainer col-4">
             <Link to="/">
-              <button className="catebtn col-3"> ART </button>
+              <button className="catebtn col-3"> {location.state.category} </button>
             </Link>
 
             <div className="cardContainer">
@@ -87,7 +88,7 @@ const DesignExample = () => {
                 </Link>
                 </div>
 
-                <button className="catebtn col-5">뒤로가기</button>
+                <button className="catebtn col-5" onClick={() => naviagte(-1)}>뒤로가기</button>
               </div>
             </div>
           </div>

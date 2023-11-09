@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import artDC2 from "../assets/images/artDC2.PNG";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const DesignBuy = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
   const [userPosition, setPosition] = useState("");
   const [userAttach, setAttach] = useState("");
+  const naviagte = useNavigate();
+  const location = useLocation();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -38,13 +39,6 @@ const DesignBuy = () => {
     setAttach(e.target.value);
   };
 
-  const data = {
-    name: "놀라운 명함",
-    author: "Whee",
-    desc: "캐릭터가 놀라는 이미지를 사용해서 만들어진 디자인입니다.\n캐릭터를 이용하여 자신의 이름을 부각시킬 수 있고 캐릭터를 통해\n자신의 개성을 드러낼 수 있는 명함 이미지입니다.",
-    price: 0.08,
-  };
-
   return (
     <div className="defaultContainer">
       <div className="container">
@@ -58,7 +52,10 @@ const DesignBuy = () => {
 
           <div className="designImg col-5 d-flex">
             <div className="card">
-              <img src={artDC2} alt="이미지" />
+              <img
+                src={require(`assets/images/${location.state.img}.PNG`)}
+                alt="이미지"
+              />
               <div className="card_name">{userName}</div>
               <div className="card_position">{userPosition}</div>
               <div className="card_attach">{userAttach}</div>
@@ -69,7 +66,10 @@ const DesignBuy = () => {
 
           <div className="descContainer col-4">
             <Link to="/">
-              <button className="catebtn col-3"> ART </button>
+              <button className="catebtn col-3">
+                {" "}
+                {location.state.category}{" "}
+              </button>
             </Link>
 
             <div className="cardContainer">
@@ -109,9 +109,11 @@ const DesignBuy = () => {
               </form>
 
               <div className="btnContainer d-flex col-12 align-items-center">
-                <div className="cardPrice col-6">{data.price}EH</div>
+                <div className="cardPrice col-6">{location.state.price}EH</div>
 
-                <button className="catebtn buybtn">뒤로가기</button>
+                <button className="catebtn buybtn" onClick={() => naviagte(-1)}>
+                  뒤로가기
+                </button>
               </div>
 
               <div className="d-flex col-12 justify-content-center">
@@ -130,7 +132,8 @@ const DesignBuy = () => {
             <div className="modalTitle">디자인 구매</div>
             <div className="modalDesc">
               해당 디자인의 가격은{" "}
-              <span className="text-danger">{data.price} EH</span> 입니다.
+              <span className="text-danger">{location.state.price} EH</span>{" "}
+              입니다.
               <br />
               구매 후 입력한 정보를 변경할 수 없습니다.
               <br />
@@ -149,6 +152,6 @@ const DesignBuy = () => {
       )}
     </div>
   );
-}
+};
 
 export default DesignBuy;

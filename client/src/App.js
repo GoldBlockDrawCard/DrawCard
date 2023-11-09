@@ -29,15 +29,15 @@ const App = () => {
           <Route path="/" element={<Main />} />
           {/* 프로필 페이지 이동 */}
           <Route path="/mainprofile" element={<MainProfile />} />
-          <Route path="/desingerprofile" element={<DesignerProfile />} />
+          <Route path="/desingerprofile/:idx" element={<DesignerProfile />} />
           {/* 프로필 구매 페이지 페이지 이동 */}
           <Route path="/profilesell" element={<ProfileSell />} />
           {/* 명함 상세 페이지 페이지 이동 */}
-          <Route path="/designinfo" element={<DesignInfo />} />
+          <Route path="/designinfo/:idx" element={<DesignInfo />} />
           <Route path="/carddetailmy" element={<CardDetailMy />} />
           {/* 명함 구매 페이지 페이지 이동 */}
-          <Route path="/designexample" element={<DesignExample />} />
-          <Route path="/designbuy" element={<DesignBuy />} />
+          <Route path="/designinfo/:idx/preview" element={<DesignExample />} />
+          <Route path="/designbuy/:idx" element={<DesignBuy />} />
           {/* 명함 판매 목록 페이지 이동 */}
           <Route path="/items" element={<Items />} />
         </Routes>

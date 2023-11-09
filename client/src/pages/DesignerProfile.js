@@ -1,25 +1,52 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import Profile from "../assets/images/designer01.PNG";
-import { useState } from "react";
-import Example1 from "../assets/images/ex1.png";
-import Example2 from "../assets/images/ex2.png";
-import Example3 from "../assets/images/ex3.png";
-import Art2 from "../assets/images/artDC2.PNG";
-import Art3 from "../assets/images/artDC3.PNG";
-import Art4 from "../assets/images/artDC4.PNG";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DesignerProfile = () => {
   const [category, setCategory] = useState("buy");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [cardDB, setCardDB] = useState([]);
+
+  const getData = async () => {
+    const res = await fetch(`http://localhost:4000/api/cards`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+    let count = 0;
+
+    const initCardData = res.map((card) => {
+      return {
+        idx: count++,
+        id: card._id,
+        category: card.cardCate,
+        userWallet: card.wallet,
+        designer: card.regiName,
+        designeName: card.cardName,
+        designDesc: card.cardDesc,
+        price: card.cardPrice,
+        img: card.cardImg,
+        sale: card.cardSale
+      };
+    });
+
+    setCardDB(initCardData);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="defaultContainer">
-      <Container>
+      <div className="container">
         <hr />
         <div className="profileImg">
-          <img src={Profile} alt="profile" width={"100%"} />
-          <div>Whee</div>
+          <img
+            src={require(`assets/images/${location.state.img}.PNG`)}
+            alt="profile"
+            width={"100%"}
+          />
+          <div>{location.state.designer}</div>
         </div>
         <hr />
 
@@ -30,8 +57,7 @@ const DesignerProfile = () => {
               setCategory("buy");
             }}
           >
-            {" "}
-            구매 목록 <span></span>
+            판매 중
           </button>
 
           <button
@@ -40,43 +66,85 @@ const DesignerProfile = () => {
               setCategory("sell");
             }}
           >
-            {" "}
-            판매 목록 <span></span>
+            판매완료
           </button>
         </div>
 
-        {category === "buy" && (
-          <>
-            <div className="buy_profile">
-              <Link to="/cardDetail" className="new_content">
-                <img src={Example1} alt="profile" />
-              </Link>
-              <Link to="/cardDetail" className="new_content">
-                <img src={Example2} alt="profile" />
-              </Link>
-              <Link to="/cardDetail" className="new_content">
-                <img src={Example3} alt="profile" />
-              </Link>
-            </div>
-          </>
-        )}
+        {category === "buy" &&
+        (cardDB.filter((card) => card.designer === location.state.designer && card.sale === true) ==
+          "" ? (
+          <p>현재 판매중인 상품이 없습니다.</p>
+        ) : (
+          cardDB
+            .filter((card) => card.designer === location.state.designer && card.sale === true)
+            .map((card) => (
+              <div
+                className="new_content"
+                key={card.id}
+                onClick={() => {
+                  navigate(`/designinfo/idx=${card.idx}`, {
+                    state: {
+                      idx: card.idx,
+                      category: card.category,
+                      name: card.designeName,
+                      designer: card.designer,
+                      desc: card.designDesc,
+                      price: card.price,
+                      img: card.img,
+                      sale: card.cardSale
+                    },
+                  });
+                }}
+              >
+                <img
+                  src={require(`assets/images/${card.img}.PNG`)}
+                  alt="profile"
+                />
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
+              </div>
+            ))
+        ))}
 
-        {category === "sell" && (
-          <>
-            <div className="sell_profile">
-              <Link to="/cardDetail" className="new_content">
-                <img src={Art2} alt="profile" />
-              </Link>
-              <Link to="/cardDetail" className="new_content">
-                <img src={Art3} alt="profile" />
-              </Link>
-              <Link to="/cardDetail" className="new_content">
-                <img src={Art4} alt="profile" />
-              </Link>
-            </div>
-          </>
-        )}
-      </Container>
+        {category === "sell" && (cardDB.filter((card) => card.designer === location.state.designer && card.sale === false) ==
+          "" ? (
+          <p>현재 판매완료된 상품이 없습니다.</p>
+        ) : (
+          cardDB
+            .filter((card) => card.designer === location.state.designer && card.sale === false)
+            .map((card) => (
+              <div
+                className="new_content"
+                key={card.id}
+                onClick={() => {
+                  navigate(`/designinfo/idx=${card.idx}`, {
+                    state: {
+                      idx: card.idx,
+                      category: card.category,
+                      name: card.designeName,
+                      designer: card.designer,
+                      desc: card.designDesc,
+                      price: card.price,
+                      img: card.img,
+                      sale: card.cardSale
+                    },
+                  });
+                }}
+              >
+                <img
+                  src={require(`assets/images/${card.img}.PNG`)}
+                  alt="profile"
+                />
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
+              </div>
+            ))
+        ))}
+      </div>
     </div>
   );
 };
