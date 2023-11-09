@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 import ProductCard from "../components/ProductCard";
-import MenuButton from "../components/MenuButton";
 
 const Items = () => {
   return (
@@ -12,9 +11,15 @@ const Items = () => {
         <hr></hr>
 
         <div className="menu-buttons">
-          <MenuButton name="구매 목록" />
-          <MenuButton name="판매 목록" />
-          <MenuButton name="판매 등록" />
+          <button className="catebtn col-1">
+            <span>구매 목록</span>
+          </button>
+          <button className="catebtn col-1">
+            <span>판매 목록</span>
+          </button>
+          <button className="catebtn col-1">
+            <span>판매 등록</span>
+          </button>
         </div>
       </Container>
 
