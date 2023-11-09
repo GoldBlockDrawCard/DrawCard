@@ -12,7 +12,8 @@ const cardSchema = new Schema({
   cardCate: { type: String },
   cardDesc: { type: String, maxlength: 100 },
   cardPrice: { type: Number },
-  cardImg: { type: String }
+  cardImg: { type: String },
+  cardSale: { type: Boolean}
 }, {
   versionKey: false,
   timestamps: true,
