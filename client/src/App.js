@@ -18,6 +18,7 @@ import DesignBuy from "./pages/DesignBuy";
 import CardDetailMy from "./pages/CardDetailMy";
 import Items from "./pages/Items";
 import DesignerProfile from "./pages/DesignerProfile";
+import Blank from "pages/Blank";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Routes>
           {/* 메인 페이지 이동 기본 값 */}
           <Route path="/" element={<Main />} />
+          <Route path="/:#category" element={<Main />} />
           {/* 프로필 페이지 이동 */}
           <Route path="/mainprofile" element={<MainProfile />} />
           <Route path="/desingerprofile/:idx" element={<DesignerProfile />} />
@@ -40,6 +42,7 @@ const App = () => {
           <Route path="/designbuy/:idx" element={<DesignBuy />} />
           {/* 명함 판매 목록 페이지 이동 */}
           <Route path="/items" element={<Items />} />
+          <Route path="*" element={<Blank />} />
         </Routes>
       </WagmiConfig>
     </div>
