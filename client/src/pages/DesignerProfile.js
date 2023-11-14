@@ -91,7 +91,7 @@ const DesignerProfile = () => {
                       desc: card.designDesc,
                       price: card.price,
                       img: card.img,
-                      sale: card.cardSale
+                      sale: card.sale
                     },
                   });
                 }}
@@ -128,7 +128,7 @@ const DesignerProfile = () => {
                       desc: card.designDesc,
                       price: card.price,
                       img: card.img,
-                      sale: card.cardSale
+                      sale: card.sale
                     },
                   });
                 }}

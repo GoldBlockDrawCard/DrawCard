@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { ReactComponent as RightArrow } from "../assets/svg/rightarrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
-import MenuCategory from "../components/MenuCategory";
 
 const Main = () => {
   const [category, setCategory] = useState("ALL");
-  // const { categoryID } = useParams();
   const [cardDB, setCardDB] = useState([]);
   const [userDB, setUserDB] = useState([]);
   const navigate = useNavigate();
@@ -106,10 +104,6 @@ const Main = () => {
           >
             <span>EFFECT</span>
           </button>
-          {/* <MenuCategory 
-            categoryID={categoryID}
-            data={category}
-            /> */}
         </div>
 
         {category === "ALL" && (
@@ -186,7 +180,7 @@ const Main = () => {
                             desc: card.designDesc,
                             price: card.price,
                             img: card.img,
-                            sale: card.cardSale
+                            sale: card.sale
                           },
                         });
                       }}
@@ -288,7 +282,7 @@ const Main = () => {
                               desc: card.designDesc,
                               price: card.price,
                               img: card.img,
-                              sale: card.cardSale
+                              sale: card.sale
                             },
                           });
                         }}
@@ -310,10 +304,10 @@ const Main = () => {
         )}
 
         {category === "BEST" && (
-          <div className="cate_profile">
+          <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "BEST") == "" ? (
-              <p>현재 BEST 카테고리에 등록된 상품이 없습니다.</p>
+              <div><p>현재 BEST 카테고리에 등록된 상품이 없습니다.</p></div>
             ) : (
               cardDB
                 .filter((card) => card.category === "BEST")
@@ -331,7 +325,7 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.cardSale
+                          sale: card.sale
                         },
                       });
                     }}
@@ -351,10 +345,10 @@ const Main = () => {
         )}
 
         {category === "NORMAL" && (
-          <div className="cate_profile">
+          <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "NORMAL") == "" ? (
-              <p>현재 NORMAL 카테고리에 등록된 상품이 없습니다.</p>
+              <div><p>현재 NORMAL 카테고리에 등록된 상품이 없습니다.</p></div>
             ) : (
               cardDB
                 .filter((card) => card.category === "NORMAL")
@@ -372,7 +366,7 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.cardSale
+                          sale: card.sale
                         },
                       });
                     }}
@@ -392,10 +386,10 @@ const Main = () => {
         )}
 
         {category === "ART" && (
-          <div className="cate_profile">
+          <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "ART") == "" ? (
-              <p>현재 ART 카테고리에 등록된 상품이 없습니다.</p>
+              <div><p>현재 ART 카테고리에 등록된 상품이 없습니다.</p></div>
             ) : (
               cardDB
                 .filter((card) => card.category === "ART")
@@ -413,7 +407,7 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.cardSale
+                          sale: card.sale
                         },
                       });
                     }}
@@ -433,10 +427,10 @@ const Main = () => {
         )}
 
         {category === "EFFECT" && (
-          <div className="cate_profile">
+          <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "EFFECT") == "" ? (
-              <p>현재 EFFECT 카테고리에 등록된 상품이 없습니다.</p>
+              <div><p>현재 EFFECT 카테고리에 등록된 상품이 없습니다.</p></div>
             ) : (
               cardDB
                 .filter((card) => card.category === "EFFECT")
@@ -454,7 +448,7 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.cardSale
+                          sale: card.sale
                         },
                       });
                     }}

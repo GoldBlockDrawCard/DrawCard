@@ -44,7 +44,7 @@ const DesignInfo = () => {
 
               <div className="cardDesc">{location.state.desc}</div>
 
-              {location.state.sale ? (
+              {location.state.sale === true ? (
                 <>
                   <div className="priceContainer d-flex col-12 align-items-center">
                     <div className="cardPrice col-6">
@@ -93,12 +93,12 @@ const DesignInfo = () => {
                       {location.state.price}EH
                     </div>
                     <div className="cardBuy col-6">
-                      <button className="catebtn buybtn"> 미리보기 </button>
+                      <div className="disabledbtn buybtn"> 미리보기 </div>
                     </div>
                   </div>
 
                   <div className="d-flex col-12 justify-content-center">
-                    <button className="catebtn examplebtn">판매 완료</button>
+                    <div className="disabledbtn examplebtn">판매 완료</div>
                   </div>
                 </>
               )}
