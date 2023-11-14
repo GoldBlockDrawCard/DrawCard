@@ -7,7 +7,8 @@ const userSchema = new Schema({
   _id: { type: objectId, auto: true },
   wallet: { type: String, required: true },
   regiName: { type: String, maxlength: 20 },
-  profileImg: { type: String, maxlength: 20 }
+  profileImg: { type: String, maxlength: 20 },
+  idx: { type: Number, auto: true }
 }, {
   versionKey: false
 });
