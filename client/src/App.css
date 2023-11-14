@@ -28,6 +28,7 @@ li {
   padding-top: 110px;
   padding-bottom: 50px;
   background-color: var(--content-color);
+  min-height: 100vh;
 }
 
 .modal-overlay {
@@ -403,6 +404,7 @@ li {
 
 .new_content:hover {
   border: #000000 0.1em solid;
+  cursor: pointer;
 }
 
 .new_content:hover .cardtitle {
@@ -454,6 +456,16 @@ li {
   justify-content: space-between;
   align-items: center;
   margin: auto;
+}
+
+.cateCard {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cateCard div {
+  margin: 1em;
 }
 
 /***************************/
@@ -531,6 +543,16 @@ li {
 
 .examplebtn {
   width: 18em;
+}
+
+.disabledbtn {
+  border: 1.5px solid grey;
+  padding: 3px;
+  margin: 7px;
+  color: black;
+  background-color: var(--wcm-color-bg-3);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
 }
 
 /***************************/
