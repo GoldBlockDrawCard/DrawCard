@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const DesignInfo = () => {
   const location = useLocation();
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
+
+  const [userDB, setUserDB] = useState([]);
+
+  const getUserData = async () => {
+    const res = await fetch(`http://localhost:4000/api/users`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+
+    const initUserData = res.map((user) => {
+      return {
+        idx: user.idx,
+        id: user._id,
+        userWallet: user.wallet,
+        designer: user.regiName,
+        img: user.profileImg,
+      };
+    });
+
+    setUserDB(initUserData);
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   return (
     <div className="defaultContainer">
@@ -35,11 +59,28 @@ const DesignInfo = () => {
             <div className="cardContainer">
               <span className="cardName">{location.state.name}</span>
 
-              <span className="cardAuthor">
-                Made by{" "}
-                <Link to="/MainpageProfile" className="text-light">
-                  <span>{location.state.designer}</span>
-                </Link>
+              <span className="cardAuthor d-flex">
+                Made by{" "}                
+                {userDB.filter((data) => data.userWallet === location.state.wallet)
+                  .map((data) => (
+                    <span
+                    className="text-light"
+                    key={data.id}
+                    onClick={() => {
+                      navigate(`/desingerprofile/idx=${data.idx}`, {
+                        state: {
+                          img: data.img,
+                          designer: data.designer,
+                          wallet: data.userWallet
+                        },
+                      });
+                    }}
+                  >
+                    <span className="designerName">{data.designer}</span>
+                  </span>
+                  ))
+                }
+
               </span>
 
               <div className="cardDesc">{location.state.desc}</div>
@@ -53,7 +94,7 @@ const DesignInfo = () => {
                     <div className="cardBuy col-6">
                       <div
                         onClick={() =>
-                          naviagte(
+                          navigate(
                             `/designinfo/idx=${location.state.idx}/preview`,
                             {
                               state: {
@@ -73,7 +114,7 @@ const DesignInfo = () => {
                     <button
                       className="catebtn examplebtn"
                       onClick={() =>
-                        naviagte(`/designbuy/idx=${location.state.idx}`, {
+                        navigate(`/designbuy/idx=${location.state.idx}`, {
                           state: {
                             category: location.state.category,
                             img: location.state.img,
@@ -104,6 +145,8 @@ const DesignInfo = () => {
               )}
             </div>
           </div>
+          <div className="col-1"></div>
+
         </div>
       </div>
     </div>

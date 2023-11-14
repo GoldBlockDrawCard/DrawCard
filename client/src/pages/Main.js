@@ -15,11 +15,10 @@ const Main = () => {
     const res = await fetch(`http://localhost:4000/api/cards`)
       .then((response) => response.json())
       .catch((error) => console.log(error));
-    let count = 0;
 
     const initCardData = res.map((card) => {
       return {
-        idx: count++,
+        idx: card.idx,
         id: card._id,
         category: card.cardCate,
         userWallet: card.wallet,
@@ -39,11 +38,10 @@ const Main = () => {
     const res = await fetch(`http://localhost:4000/api/users`)
       .then((response) => response.json())
       .catch((error) => console.log(error));
-    let count = 0;
 
     const initUserData = res.map((user) => {
       return {
-        idx: count++,
+        idx: user.idx,
         id: user._id,
         userWallet: user.wallet,
         designer: user.regiName,
@@ -126,7 +124,8 @@ const Main = () => {
                       onClick={() => {
                         navigate(`/desingerprofile/idx=${data.idx}`,{state: {
                           img: data.img,
-                          designer: data.designer
+                          designer: data.designer,
+                          wallet: data.userWallet
                         }})
                       }}
                     >
@@ -180,7 +179,8 @@ const Main = () => {
                             desc: card.designDesc,
                             price: card.price,
                             img: card.img,
-                            sale: card.sale
+                            sale: card.sale,
+                            wallet: card.userWallet
                           },
                         });
                       }}
@@ -231,7 +231,8 @@ const Main = () => {
                               desc: card.designDesc,
                               price: card.price,
                               img: card.img,
-                              sale: card.sale
+                              sale: card.sale,
+                              wallet: card.userWallet
                             },
                           });
                         }}
@@ -282,7 +283,8 @@ const Main = () => {
                               desc: card.designDesc,
                               price: card.price,
                               img: card.img,
-                              sale: card.sale
+                              sale: card.sale,
+                              wallet: card.userWallet
                             },
                           });
                         }}
@@ -325,7 +327,8 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.sale
+                          sale: card.sale,
+                          wallet: card.userWallet
                         },
                       });
                     }}
@@ -366,7 +369,8 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.sale
+                          sale: card.sale,
+                          wallet: card.userWallet
                         },
                       });
                     }}
@@ -407,7 +411,8 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.sale
+                          sale: card.sale,
+                          wallet: card.userWallet
                         },
                       });
                     }}
@@ -448,7 +453,8 @@ const Main = () => {
                           desc: card.designDesc,
                           price: card.price,
                           img: card.img,
-                          sale: card.sale
+                          sale: card.sale,
+                          wallet: card.userWallet
                         },
                       });
                     }}
