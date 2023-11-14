@@ -123,6 +123,7 @@ const DesignBuy = () => {
               </div>
             </div>
           </div>
+          <div className="col-1"></div>
         </div>
       </div>
 

@@ -523,6 +523,11 @@ li {
   margin-bottom: 1em;
 }
 
+.designerName {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .priceContainer {
   margin-top: 1em;
 }
@@ -538,11 +543,11 @@ li {
 }
 
 .buybtn {
-  width: 8.5em;
+  width: 90%;
 }
 
 .examplebtn {
-  width: 18em;
+  width: 100%;
 }
 
 .disabledbtn {

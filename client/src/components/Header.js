@@ -10,7 +10,7 @@ const Header = () => {
   const [walletModal, setWalletModal] = useState(false);
 
   const { disconnect } = useDisconnect();
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
 
   const showWalletModal = () => {
     setWalletModal(true);
