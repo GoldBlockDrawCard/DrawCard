@@ -758,11 +758,17 @@ li {
 }
 
 .sellAprofile {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 }
 
 .sellAprofile div {
+  padding: 8px;
+}
+
+.sellAprofile label {
   padding: 8px;
 }
 
