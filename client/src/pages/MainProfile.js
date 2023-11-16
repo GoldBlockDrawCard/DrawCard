@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Example from "../assets/images/ex1.png";
@@ -11,19 +11,6 @@ import { useAccount } from "wagmi";
 const MainProfile = () => {
   const [category, setCategory] = useState("buy");
   const { address } = useAccount();
-  // const [cardCategory, setCardCategory] = useState("");
-  // const cateList = ["BEST", "NORMAL", "ART", "EFFECT"];
-  const [isDropdownView, setDropdownView] = useState(false);
-
-  // const handleClickContainer = () => {
-  //   setDropdownView(!isDropdownView);
-  // };
-
-  const handleBlurContainer = () => {
-    setTimeout(() => {
-      setDropdownView(false);
-    }, 200);
-  };
 
   const DesignSchema = Yup.object().shape({
     cardName: Yup.string()
@@ -35,8 +22,6 @@ const MainProfile = () => {
       .max(200, "200 글자 이하로 입력해주세요!")
       .required("디자인 설명을 입력해주세요!"),
     cardCate: Yup.string()
-      .min(2, "2 글자 이상으로 입력해주세요!")
-      .max(11, "10 글자 이하로 입력해주세요!")
       .required("디자인 카테고리를 설정해주세요!"),
     cardPrice: Yup.number()
       .min(1, "1 이상으로 입력해주세요!")
@@ -49,22 +34,6 @@ const MainProfile = () => {
   //     .then((response) => response.json())
   //     .catch((error) => console.log(error));
 
-  //   const initCardData = res.map((card) => {
-  //     return {
-  //       idx: card.idx,
-  //       id: card._id,
-  //       category: card.cardCate,
-  //       userWallet: card.wallet,
-  //       designer: card.regiName,
-  //       designeName: card.cardName,
-  //       designDesc: card.cardDesc,
-  //       price: card.cardPrice,
-  //       img: card.cardImg,
-  //       sale: card.cardSale,
-  //     };
-  //   });
-
-  //   setCardDB(initCardData);
   // };
 
   // useEffect(() => {
@@ -160,55 +129,67 @@ const MainProfile = () => {
           >
             {({ errors, touched }) => (
               <Form className="sellAprofile">
-                <label htmlFor="cardName">
+                <label
+                  htmlFor="cardName"
+                  className="col-5 d-flex justify-content-between"
+                >
                   디자인 이름
                   <Field id="cardName" name="cardName" />
-                  {errors.cardName && touched.cardName ? (
-                    <div id="cardNameError">{errors.cardName}</div>
-                  ) : null}
                 </label>
-                <label htmlFor="cardDesc">
+                {errors.cardName && touched.cardName ? (
+                  <div id="cardNameError">{errors.cardName}</div>
+                ) : null}
+
+                <label
+                  htmlFor="cardDesc"
+                  className="col-5 d-flex justify-content-between"
+                >
                   디자인 설명
                   <Field id="cardDesc" name="cardDesc" />
-                  {errors.cardDesc && touched.cardDesc ? (
-                    <div id="cardDescError">{errors.cardDesc}</div>
-                  ) : null}
                 </label>
-                <label htmlFor="cardCate" onBlur={handleBlurContainer}>
+                {errors.cardDesc && touched.cardDesc ? (
+                  <div id="cardDescError">{errors.cardDesc}</div>
+                ) : null}
+
+                <label
+                  htmlFor="cardCate"
+                  className="col-5 d-flex justify-content-between"
+                >
                   디자인 카테고리
-                  <Field id="cardCate" name="cardCate" />
-                  {/* <label className="container" onClick={handleClickContainer}>
-                    <button type="button" value="cardCate">
-                      {cardCategory}
-                    </button>
-                    {isDropdownView && (
-                      <ul>
-                        {cateList.map((data, key) => (
-                          <li key={key} onClick={() => setCardCategory(data)}>
-                            {data}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </label> */}
-                  {errors.cardCate && touched.cardCate ? (
-                    <div id="cardCateError">{errors.cardCate}</div>
-                  ) : null}
+                  <Field id="cardCate" as="select" name="cardCate">
+                  <option disabled value="">--카테고리 선택--</option>
+                    <option value="BEST">BEST</option>
+                    <option value="NORMAL">NORMAL</option>
+                    <option value="ART">ART</option>
+                    <option value="EFFECT">EFFECT</option>
+                  </Field>
                 </label>
-                <label htmlFor="cardPrice">
+                {errors.cardCate && touched.cardCate ? (
+                  <div id="cardCateError">{errors.cardCate}</div>
+                ) : null}
+
+                <label
+                  htmlFor="cardPrice"
+                  className="col-5 d-flex justify-content-between"
+                >
                   디자인 가격
                   <Field id="cardPrice" name="cardPrice" type="number" />
-                  {errors.cardPrice && touched.cardPrice ? (
-                    <div id="cardPriceError">{errors.cardPrice}</div>
-                  ) : null}
                 </label>
-                <label htmlFor="cardImg">
+                {errors.cardPrice && touched.cardPrice ? (
+                  <div id="cardPriceError">{errors.cardPrice}</div>
+                ) : null}
+
+                <label
+                  htmlFor="cardImg"
+                  className="col-5 d-flex justify-content-between"
+                >
                   디자인 이미지
                   <Field id="cardImg" name="cardImg" type="file" />
-                  {errors.cardImg && touched.cardImg ? (
-                    <div id="cardImgError">{errors.cardImg}</div>
-                  ) : null}
                 </label>
+                {errors.cardImg && touched.cardImg ? (
+                  <div id="cardImgError">{errors.cardImg}</div>
+                ) : null}
+
                 <button className="catebtn col-3" type="submit">
                   Submit
                 </button>
