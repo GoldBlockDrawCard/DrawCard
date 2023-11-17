@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Example from "../assets/images/ex1.png";
@@ -29,16 +29,22 @@ const MainProfile = () => {
       .required("디자인 가격을 입력해주세요!"),
   });
 
-  // const getData = async () => {
-  //   const res = await fetch(`http://localhost:4000/api/cards`)
-  //     .then((response) => response.json())
-  //     .catch((error) => console.log(error));
-
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const handleSubmit = (e) => {
+    fetch("http://localhost:4000/api/cards", {
+        method : "POST",
+        headers : {
+            "Content-Type":"application/json; charset=utf-8"
+        },
+        body: JSON.stringify(e)
+    })
+    .then(res=>{
+        console.log(res)
+        return res.json();
+    })
+    .then(res=> {
+        console.log(res);
+    })
+  }
 
   return (
     <div className="defaultContainer">
@@ -117,15 +123,15 @@ const MainProfile = () => {
           <Formik
             initialValues={{
               wallet: address,
+              regiName: "untitle",
               cardName: "",
               cardDesc: "",
               cardCate: "",
               cardPrice: "",
+              cardImg: "",
             }}
             validationSchema={DesignSchema}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
+            onSubmit={(e) => handleSubmit(e)}
           >
             {({ errors, touched }) => (
               <Form className="sellAprofile">
