@@ -15,7 +15,7 @@ import ProfileSell from "./pages/ProfileSell";
 import DesignInfo from "./pages/DesignInfo";
 import DesignExample from "./pages/DesignExample";
 import DesignBuy from "./pages/DesignBuy";
-import CardDetailMy from "./pages/CardDetailMy";
+import PurchasedCard from "./pages/PurchasedCard";
 import Items from "./pages/Items";
 import DesignerProfile from "./pages/DesignerProfile";
 import Blank from "pages/Blank";
@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/profilesell" element={<ProfileSell />} />
           {/* 명함 상세 페이지 페이지 이동 */}
           <Route path="/designinfo/:idx" element={<DesignInfo />} />
-          <Route path="/carddetailmy" element={<CardDetailMy />} />
+          <Route path="/purchased/:idx" element={<PurchasedCard />} />
           {/* 명함 구매 페이지 페이지 이동 */}
           <Route path="/designinfo/:idx/preview" element={<DesignExample />} />
           <Route path="/designbuy/:idx" element={<DesignBuy />} />
