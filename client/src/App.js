@@ -11,12 +11,10 @@ import Header from "./components/Header";
 
 import Main from "./pages/Main";
 import MainProfile from "./pages/MainProfile";
-import ProfileSell from "./pages/ProfileSell";
 import DesignInfo from "./pages/DesignInfo";
 import DesignExample from "./pages/DesignExample";
 import DesignBuy from "./pages/DesignBuy";
 import PurchasedCard from "./pages/PurchasedCard";
-import Items from "./pages/Items";
 import DesignerProfile from "./pages/DesignerProfile";
 import Blank from "pages/Blank";
 
@@ -33,7 +31,6 @@ const App = () => {
           <Route path="/mainprofile" element={<MainProfile />} />
           <Route path="/desingerprofile/:idx" element={<DesignerProfile />} />
           {/* 프로필 구매 페이지 페이지 이동 */}
-          <Route path="/profilesell" element={<ProfileSell />} />
           {/* 명함 상세 페이지 페이지 이동 */}
           <Route path="/designinfo/:idx" element={<DesignInfo />} />
           <Route path="/purchased/:idx" element={<PurchasedCard />} />
@@ -41,7 +38,6 @@ const App = () => {
           <Route path="/designinfo/:idx/preview" element={<DesignExample />} />
           <Route path="/designbuy/:idx" element={<DesignBuy />} />
           {/* 명함 판매 목록 페이지 이동 */}
-          <Route path="/items" element={<Items />} />
           <Route path="*" element={<Blank />} />
         </Routes>
       </WagmiConfig>
