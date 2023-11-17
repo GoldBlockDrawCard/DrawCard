@@ -15,6 +15,7 @@ const cardSchema = new Schema(
     cardDesc: { type: String, maxlength: 100 },
     cardPrice: { type: Number },
     cardImg: { type: String },
+    buyer: { type: String, default: ""}
   },
   {
     versionKey: false,
