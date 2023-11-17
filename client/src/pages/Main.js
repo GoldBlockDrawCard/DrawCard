@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 
 const Main = () => {
-  const [category, setCategory] = useState("ALL");
+  const [category, setCategory] = useState("");
   const [cardDB, setCardDB] = useState([]);
   const [userDB, setUserDB] = useState([]);
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ const Main = () => {
 
     const initCardData = res.map((card) => {
       return {
-        idx: card.idx,
         id: card._id,
         category: card.cardCate,
         userWallet: card.wallet,
@@ -27,7 +26,7 @@ const Main = () => {
         designDesc: card.cardDesc,
         price: card.cardPrice,
         img: card.cardImg,
-        sale: card.cardSale
+        sale: card.cardSale,
       };
     });
 
@@ -41,7 +40,6 @@ const Main = () => {
 
     const initUserData = res.map((user) => {
       return {
-        idx: user.idx,
         id: user._id,
         userWallet: user.wallet,
         designer: user.regiName,
@@ -66,6 +64,7 @@ const Main = () => {
             className="catebtn col-1"
             onClick={() => {
               setCategory("ALL");
+              navigate(`/#category=all`);
             }}
           >
             <span>ALL</span>
@@ -74,6 +73,7 @@ const Main = () => {
             className="catebtn col-1"
             onClick={() => {
               setCategory("BEST");
+              navigate(`/#category=best`);
             }}
           >
             <span>BEST</span>
@@ -82,6 +82,7 @@ const Main = () => {
             className="catebtn col-1"
             onClick={() => {
               setCategory("NORMAL");
+              navigate(`/#category=normal`);
             }}
           >
             <span>NORMAL</span>
@@ -90,6 +91,7 @@ const Main = () => {
             className="catebtn col-1"
             onClick={() => {
               setCategory("ART");
+              navigate(`/#category=art`);
             }}
           >
             <span>ART</span>
@@ -98,13 +100,14 @@ const Main = () => {
             className="catebtn col-1"
             onClick={() => {
               setCategory("EFFECT");
+              navigate(`/#category=effect`);
             }}
           >
             <span>EFFECT</span>
           </button>
         </div>
 
-        {category === "ALL" && (
+        {category === "" && (
           <>
             {/* 작가 프로필 홍보 영역 */}
             <Swiper
@@ -122,11 +125,14 @@ const Main = () => {
                     <div
                       className="main_content"
                       onClick={() => {
-                        navigate(`/desingerprofile/idx=${data.idx}`,{state: {
-                          img: data.img,
-                          designer: data.designer,
-                          wallet: data.userWallet
-                        }})
+                        navigate(`/desingerprofile/idx=${data.id}`, {
+                          state: {
+                            id: data.id,
+                            img: data.img,
+                            designer: data.designer,
+                            wallet: data.userWallet,
+                          },
+                        });
                       }}
                     >
                       <img
@@ -164,38 +170,38 @@ const Main = () => {
                 }}
               >
                 {cardDB
-                .filter((card) => card.sale === true)
-                .map((card) => (
-                  <SwiperSlide key={card.id}>
-                    <div
-                      className="new_content"
-                      onClick={() => {
-                        navigate(`/designinfo/idx=${card.idx}`, {
-                          state: {
-                            idx: card.idx,
-                            category: card.category,
-                            name: card.designeName,
-                            designer: card.designer,
-                            desc: card.designDesc,
-                            price: card.price,
-                            img: card.img,
-                            sale: card.sale,
-                            wallet: card.userWallet
-                          },
-                        });
-                      }}
-                    >
-                      <img
-                        src={require(`assets/images/${card.img}.PNG`)}
-                        alt="profile"
-                      />
-                      <p className="cardtitle">
-                        NickName<span>Job</span>
-                        <span>Company</span>
-                      </p>
-                    </div>
-                  </SwiperSlide>
-                ))}
+                  .filter((card) => card.sale === true)
+                  .map((card) => (
+                    <SwiperSlide key={card.id}>
+                      <div
+                        className="new_content"
+                        onClick={() => {
+                          navigate(`/designinfo/idx=${card.id}`, {
+                            state: {
+                              id: card.id,
+                              category: card.category,
+                              name: card.designeName,
+                              designer: card.designer,
+                              desc: card.designDesc,
+                              price: card.price,
+                              img: card.img,
+                              sale: card.sale,
+                              wallet: card.userWallet,
+                            },
+                          });
+                        }}
+                      >
+                        <img
+                          src={require(`assets/images/${card.img}.PNG`)}
+                          alt="profile"
+                        />
+                        <p className="cardtitle">
+                          NickName<span>Job</span>
+                          <span>Company</span>
+                        </p>
+                      </div>
+                    </SwiperSlide>
+                  ))}
               </Swiper>
 
               <div className="subtitle">Whee 작가</div>
@@ -222,9 +228,9 @@ const Main = () => {
                       <div
                         className="new_content"
                         onClick={() => {
-                          navigate(`/designinfo/idx=${card.idx}`, {
+                          navigate(`/designinfo/idx=${card.id}`, {
                             state: {
-                              idx: card.idx,
+                              id: card.id,
                               category: card.category,
                               name: card.designeName,
                               designer: card.designer,
@@ -232,7 +238,7 @@ const Main = () => {
                               price: card.price,
                               img: card.img,
                               sale: card.sale,
-                              wallet: card.userWallet
+                              wallet: card.userWallet,
                             },
                           });
                         }}
@@ -274,9 +280,9 @@ const Main = () => {
                       <div
                         className="new_content"
                         onClick={() => {
-                          navigate(`/designinfo/idx=${card.idx}`, {
+                          navigate(`/designinfo/idx=${card.id}`, {
                             state: {
-                              idx: card.idx,
+                              id: card.id,
                               category: card.category,
                               name: card.designeName,
                               designer: card.designer,
@@ -284,7 +290,7 @@ const Main = () => {
                               price: card.price,
                               img: card.img,
                               sale: card.sale,
-                              wallet: card.userWallet
+                              wallet: card.userWallet,
                             },
                           });
                         }}
@@ -305,11 +311,49 @@ const Main = () => {
           </>
         )}
 
+        {category === "ALL" && (
+          <div className="cateCard">
+            {/* 작가 프로필 홍보 영역 */}
+            {cardDB.map((card) => (
+              <div
+                className="new_content"
+                key={card.id}
+                onClick={() => {
+                  navigate(`/designinfo/idx=${card.id}`, {
+                    state: {
+                      id: card.id,
+                      category: card.category,
+                      name: card.designeName,
+                      designer: card.designer,
+                      desc: card.designDesc,
+                      price: card.price,
+                      img: card.img,
+                      sale: card.sale,
+                      wallet: card.userWallet,
+                    },
+                  });
+                }}
+              >
+                <img
+                  src={require(`assets/images/${card.img}.PNG`)}
+                  alt="profile"
+                />
+                <p className="cardtitle">
+                  NickName<span>Job</span>
+                  <span>Company</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
         {category === "BEST" && (
           <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "BEST") == "" ? (
-              <div><p>현재 BEST 카테고리에 등록된 상품이 없습니다.</p></div>
+              <div>
+                <p>현재 BEST 카테고리에 등록된 상품이 없습니다.</p>
+              </div>
             ) : (
               cardDB
                 .filter((card) => card.category === "BEST")
@@ -318,9 +362,9 @@ const Main = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,
@@ -328,7 +372,7 @@ const Main = () => {
                           price: card.price,
                           img: card.img,
                           sale: card.sale,
-                          wallet: card.userWallet
+                          wallet: card.userWallet,
                         },
                       });
                     }}
@@ -351,7 +395,9 @@ const Main = () => {
           <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "NORMAL") == "" ? (
-              <div><p>현재 NORMAL 카테고리에 등록된 상품이 없습니다.</p></div>
+              <div>
+                <p>현재 NORMAL 카테고리에 등록된 상품이 없습니다.</p>
+              </div>
             ) : (
               cardDB
                 .filter((card) => card.category === "NORMAL")
@@ -360,9 +406,9 @@ const Main = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,
@@ -370,7 +416,7 @@ const Main = () => {
                           price: card.price,
                           img: card.img,
                           sale: card.sale,
-                          wallet: card.userWallet
+                          wallet: card.userWallet,
                         },
                       });
                     }}
@@ -393,7 +439,9 @@ const Main = () => {
           <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "ART") == "" ? (
-              <div><p>현재 ART 카테고리에 등록된 상품이 없습니다.</p></div>
+              <div>
+                <p>현재 ART 카테고리에 등록된 상품이 없습니다.</p>
+              </div>
             ) : (
               cardDB
                 .filter((card) => card.category === "ART")
@@ -402,9 +450,9 @@ const Main = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,
@@ -412,7 +460,7 @@ const Main = () => {
                           price: card.price,
                           img: card.img,
                           sale: card.sale,
-                          wallet: card.userWallet
+                          wallet: card.userWallet,
                         },
                       });
                     }}
@@ -435,7 +483,9 @@ const Main = () => {
           <div className="cateCard">
             {/* 작가 프로필 홍보 영역 */}
             {cardDB.filter((card) => card.category === "EFFECT") == "" ? (
-              <div><p>현재 EFFECT 카테고리에 등록된 상품이 없습니다.</p></div>
+              <div>
+                <p>현재 EFFECT 카테고리에 등록된 상품이 없습니다.</p>
+              </div>
             ) : (
               cardDB
                 .filter((card) => card.category === "EFFECT")
@@ -444,9 +494,9 @@ const Main = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,
@@ -454,7 +504,7 @@ const Main = () => {
                           price: card.price,
                           img: card.img,
                           sale: card.sale,
-                          wallet: card.userWallet
+                          wallet: card.userWallet,
                         },
                       });
                     }}

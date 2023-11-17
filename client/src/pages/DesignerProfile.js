@@ -15,7 +15,6 @@ const DesignerProfile = () => {
 
     const initCardData = res.map((card) => {
       return {
-        idx: card.idx,
         id: card._id,
         category: card.cardCate,
         userWallet: card.wallet,
@@ -87,9 +86,9 @@ const DesignerProfile = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,
@@ -132,9 +131,9 @@ const DesignerProfile = () => {
                     className="new_content"
                     key={card.id}
                     onClick={() => {
-                      navigate(`/designinfo/idx=${card.idx}`, {
+                      navigate(`/designinfo/idx=${card.id}`, {
                         state: {
-                          idx: card.idx,
+                          id: card.id,
                           category: card.category,
                           name: card.designeName,
                           designer: card.designer,

@@ -14,7 +14,6 @@ const DesignInfo = () => {
 
     const initUserData = res.map((user) => {
       return {
-        idx: user.idx,
         id: user._id,
         userWallet: user.wallet,
         designer: user.regiName,
@@ -67,8 +66,9 @@ const DesignInfo = () => {
                     className="text-light"
                     key={data.id}
                     onClick={() => {
-                      navigate(`/desingerprofile/idx=${data.idx}`, {
+                      navigate(`/desingerprofile/idx=${data.id}`, {
                         state: {
+                          id: data.id,
                           img: data.img,
                           designer: data.designer,
                           wallet: data.userWallet
@@ -95,9 +95,10 @@ const DesignInfo = () => {
                       <div
                         onClick={() =>
                           navigate(
-                            `/designinfo/idx=${location.state.idx}/preview`,
+                            `/designinfo/idx=${location.state.id}/preview`,
                             {
                               state: {
+                                id:location.state.id,
                                 category: location.state.category,
                                 img: location.state.img,
                               },
@@ -114,8 +115,9 @@ const DesignInfo = () => {
                     <button
                       className="catebtn examplebtn"
                       onClick={() =>
-                        navigate(`/designbuy/idx=${location.state.idx}`, {
+                        navigate(`/designbuy/idx=${location.state.id}`, {
                           state: {
+                            id:location.state.id,
                             category: location.state.category,
                             img: location.state.img,
                             price: location.state.price,
