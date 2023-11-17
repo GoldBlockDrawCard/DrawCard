@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Example from "../assets/images/ex1.png";
 import Profile from "../assets/images/defualt.png";
 import Change from "../assets/images/change.png";
@@ -11,6 +11,8 @@ import { useAccount } from "wagmi";
 const MainProfile = () => {
   const [category, setCategory] = useState("buy");
   const { address } = useAccount();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const DesignSchema = Yup.object().shape({
     cardName: Yup.string()
@@ -21,8 +23,7 @@ const MainProfile = () => {
       .min(10, "10 글자 이상으로 입력해주세요!")
       .max(200, "200 글자 이하로 입력해주세요!")
       .required("디자인 설명을 입력해주세요!"),
-    cardCate: Yup.string()
-      .required("디자인 카테고리를 설정해주세요!"),
+    cardCate: Yup.string().required("디자인 카테고리를 설정해주세요!"),
     cardPrice: Yup.number()
       .min(1, "1 이상으로 입력해주세요!")
       .max(999999, "999,999 이하로 입력해주세요!")
@@ -31,20 +32,48 @@ const MainProfile = () => {
 
   const handleSubmit = (e) => {
     fetch("http://localhost:4000/api/cards", {
-        method : "POST",
-        headers : {
-            "Content-Type":"application/json; charset=utf-8"
-        },
-        body: JSON.stringify(e)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(e),
     })
-    .then(res=>{
-        console.log(res)
-        return res.json();
-    })
-    .then(res=> {
+      .then((res) => {
         console.log(res);
-    })
-  }
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
+  const [cardDB, setCardDB] = useState([]);
+
+  const getData = async () => {
+    const res = await fetch(`http://localhost:4000/api/cards`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+
+    const initCardData = res.map((card) => {
+      return {
+        id: card._id,
+        category: card.cardCate,
+        userWallet: card.wallet,
+        designer: card.regiName,
+        designeName: card.cardName,
+        designDesc: card.cardDesc,
+        img: card.cardImg,
+        sale: card.cardSale,
+        buyer: card.buyer,
+      };
+    });
+
+    setCardDB(initCardData);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="defaultContainer">
@@ -96,9 +125,39 @@ const MainProfile = () => {
         {category === "buy" && (
           <>
             <div className="buy_profile">
-              <Link to="/cardDetailmy" className="new_content">
-                <img src={Example} alt="profile" />
-              </Link>
+              {cardDB.filter((card) => card.buyer === address) == "" ? (
+                <div>
+                  <p>현재 구매한 상품이 없습니다.</p>
+                </div>
+              ) : (
+                cardDB
+                  .filter((card) => card.buyer === address)
+                  .map((card) => (
+                    <div
+                      className="new_content"
+                      key={card.id}
+                      onClick={() => {
+                        navigate(`/purchased/idx=${card.id}`, {
+                          state: {
+                            id: card.id,
+                            category: card.category,
+                            name: card.designeName,
+                            designer: card.designer,
+                            desc: card.designDesc,
+                            img: card.img,
+                            wallet: card.userWallet,
+                            buyer: card.buyer,
+                          },
+                        });
+                      }}
+                    >
+                      <img
+                        src={require(`assets/images/${card.img}.PNG`)}
+                        alt="profile"
+                      />
+                    </div>
+                  ))
+              )}
             </div>
           </>
         )}
@@ -163,7 +222,9 @@ const MainProfile = () => {
                 >
                   디자인 카테고리
                   <Field id="cardCate" as="select" name="cardCate">
-                  <option disabled value="">--카테고리 선택--</option>
+                    <option disabled value="">
+                      --카테고리 선택--
+                    </option>
                     <option value="BEST">BEST</option>
                     <option value="NORMAL">NORMAL</option>
                     <option value="ART">ART</option>
