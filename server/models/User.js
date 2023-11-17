@@ -3,15 +3,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const objectId = mongoose.Schema.Types.ObjectId;
 
-const userSchema = new Schema({
-  _id: { type: objectId, auto: true },
-  wallet: { type: String, required: true },
-  regiName: { type: String, maxlength: 20 },
-  profileImg: { type: String, maxlength: 20 },
-  idx: { type: Number, auto: true }
-}, {
-  versionKey: false
-});
+const userSchema = new Schema(
+  {
+    _id: { type: objectId, auto: true },
+    wallet: { type: String, required: true },
+    regiName: { type: String, maxlength: 20 },
+    profileImg: { type: String, maxlength: 20 },
+  },
+  {
+    versionKey: false,
+    timestamps: false,
+  }
+);
 
 // Create new user document
 userSchema.statics.create = function (payload) {
