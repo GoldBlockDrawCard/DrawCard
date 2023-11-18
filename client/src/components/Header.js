@@ -1,16 +1,43 @@
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/Logo.png";
-import { useState } from "react";
 import WalletModal from "./WalletModal";
+import RegistrationModal from "./registrationModal";
 import { useAccount, useDisconnect } from "wagmi";
 import HeaderButton from "./HeaderButton";
+import { ReactComponent as ReadingGlasses } from "assets/svg/readingGlasses.svg";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   // 지갑부분
   const [walletModal, setWalletModal] = useState(false);
+  const [regiModal, setRegiModal] = useState(false);
+  const [userDB, setUserDB] = useState([]);
 
   const { disconnect } = useDisconnect();
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
+
+  const getUserData = async () => {
+    const res = await fetch(`http://localhost:4000/api/users`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+
+    const initUserData = res.map((user) => {
+      return {
+        id: user._id,
+        userWallet: user.wallet,
+        designer: user.regiName,
+        img: user.profileImg,
+      };
+    });
+
+    setUserDB(initUserData);
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   const showWalletModal = () => {
     setWalletModal(true);
@@ -22,6 +49,13 @@ const Header = () => {
     setWalletModal(false);
     // 모달창 닫혔을 때 스크롤 활성
     document.body.style.overflow = "unset";
+  };
+
+  const cancelRegiModal = () => {
+    setRegiModal(false);
+    // 모달창 닫혔을 때 스크롤 활성
+    document.body.style.overflow = "unset";
+    window.location.reload();
   };
 
   return (
@@ -45,54 +79,7 @@ const Header = () => {
                 placeholder="search..."
               />
               <span className="icon">
-                <svg
-                  width="19px"
-                  height="19px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    strokeWidth="round"
-                    strokeLinejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    {" "}
-                    <path
-                      opacity="1"
-                      d="M14 5H20"
-                      stroke="#000"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>{" "}
-                    <path
-                      opacity="1"
-                      d="M14 8H17"
-                      stroke="#000"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>{" "}
-                    <path
-                      d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2"
-                      stroke="#000"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>{" "}
-                    <path
-                      opacity="1"
-                      d="M22 22L20 20"
-                      stroke="#000"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>{" "}
-                  </g>
-                </svg>
+                <ReadingGlasses />
               </span>
             </div>
           </div>
@@ -104,9 +91,27 @@ const Header = () => {
               <div onClick={disconnect} className="fancy" href="#">
                 <HeaderButton name="Wallet Disconnect" />
               </div>
-              <Link to="/mainprofile" className="fancy" href="#">
-                <HeaderButton name="profile" />
-              </Link>
+              {userDB
+                .filter((user) => user.userWallet === address)
+                .map((user) => (
+                  <div
+                    className="fancy"
+                    href="#"
+                    key={user.id}
+                    onClick={() => {
+                      navigate(`/profile/idx=${user.id}`, {
+                        state: {
+                          id: user.id,
+                          img: user.img,
+                          designer: user.designer,
+                          wallet: user.userWallet,
+                        },
+                      });
+                    }}
+                  >
+                    <HeaderButton name="profile" />
+                  </div>
+                ))}
             </div>
           ) : (
             <div className="menu_area">
@@ -122,6 +127,12 @@ const Header = () => {
         </div>
         {/* 지갑 모달창 */}
         {walletModal && <WalletModal cancelModal={cancelModal} />}
+        {regiModal && (
+          <RegistrationModal
+            address={address}
+            cancelRegiModal={cancelRegiModal}
+          />
+        )}
       </div>
     </div>
   );
