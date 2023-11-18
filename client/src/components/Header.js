@@ -51,6 +51,12 @@ const Header = () => {
     document.body.style.overflow = "unset";
   };
 
+  const showRegiModal = () => {
+    setRegiModal(true);
+    // 모달창 닫혔을 때 스크롤 활성
+    document.body.style.overflow = "hidden";
+  };
+
   const cancelRegiModal = () => {
     setRegiModal(false);
     // 모달창 닫혔을 때 스크롤 활성
@@ -91,27 +97,33 @@ const Header = () => {
               <div onClick={disconnect} className="fancy" href="#">
                 <HeaderButton name="Wallet Disconnect" />
               </div>
-              {userDB
-                .filter((user) => user.userWallet === address)
-                .map((user) => (
-                  <div
-                    className="fancy"
-                    href="#"
-                    key={user.id}
-                    onClick={() => {
-                      navigate(`/profile/idx=${user.id}`, {
-                        state: {
-                          id: user.id,
-                          img: user.img,
-                          designer: user.designer,
-                          wallet: user.userWallet,
-                        },
-                      });
-                    }}
-                  >
-                    <HeaderButton name="profile" />
-                  </div>
-                ))}
+              {userDB.filter((user) => user.userWallet === address) ? (
+                userDB
+                  .filter((user) => user.userWallet === address)
+                  .map((user) => (
+                    <div
+                      className="fancy"
+                      href="#"
+                      key={user.id}
+                      onClick={() => {
+                        navigate(`/profile/idx=${user.id}`, {
+                          state: {
+                            id: user.id,
+                            img: user.img,
+                            designer: user.designer,
+                            wallet: user.userWallet,
+                          },
+                        });
+                      }}
+                    >
+                      <HeaderButton name="profile" />
+                    </div>
+                  ))
+              ) : (
+                <div onClick={showRegiModal} className="fancy" href="#">
+                  <HeaderButton name="registration" />
+                </div>
+              )}
             </div>
           ) : (
             <div className="menu_area">
