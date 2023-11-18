@@ -17,12 +17,6 @@ const DesignBuy = () => {
     setIsModalOpen(false);
   };
 
-  // const showConfirmClaim = () => {
-  //   setIsModalOpen(true);
-  //   // 모달창 열려있을 때 스크롤 막기
-  //   document.body.style.overflow = "hidden";
-  // };
-
   const cancelConfirmClaim = () => {
     setIsModalOpen(false);
     // 모달창 닫혔을 때 스크롤 활성
