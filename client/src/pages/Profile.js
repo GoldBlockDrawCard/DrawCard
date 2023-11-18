@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import Profile from "../assets/images/defualt.png";
-import Change from "../assets/images/change.png";
+import { useNavigate, useLocation } from "react-router-dom";
+import Profile from "../assets/images/defualt.PNG";
+import Change from "../assets/images/change.PNG";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { useAccount } from "wagmi";
 
 const MainProfile = () => {
   const [category, setCategory] = useState("buy");
-  const { address } = useAccount();
+  const [cardDB, setCardDB] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
   const fileRef = useRef();
 
   const FILE_SIZE = 1024 * 1024;
@@ -70,8 +70,6 @@ const MainProfile = () => {
       });
   };
 
-  const [cardDB, setCardDB] = useState([]);
-
   const getData = async () => {
     const res = await fetch(`http://localhost:4000/api/cards`)
       .then((response) => response.json())
@@ -110,7 +108,7 @@ const MainProfile = () => {
             height={"350px"}
           />
           <div>
-            Untitle0001
+            {location.state.designer}
             <img className="profileDefault" src={Change} alt="profile" />
           </div>
         </div>
@@ -148,13 +146,13 @@ const MainProfile = () => {
         {category === "buy" && (
           <>
             <div className="buy_profile">
-              {cardDB.filter((card) => card.buyer === address) == "" ? (
+              {cardDB.filter((card) => card.buyer === location.state.wallet) === "" ? (
                 <div>
                   <p>현재 구매한 상품이 없습니다.</p>
                 </div>
               ) : (
                 cardDB
-                  .filter((card) => card.buyer === address)
+                  .filter((card) => card.buyer === location.state.wallet)
                   .map((card) => (
                     <div
                       className="new_content"
@@ -204,7 +202,7 @@ const MainProfile = () => {
         {category === "addsell" && (
           <Formik
             initialValues={{
-              wallet: address,
+              wallet: location.state.wallet,
               regiName: "untitle",
               cardName: "",
               cardDesc: "",
