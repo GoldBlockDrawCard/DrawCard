@@ -28,7 +28,7 @@ const registrationModal = ({ cancelRegiModal, address }) => {
   return (
     <div className="container">
       <div className="modal-overlay" onClick={() => handleSubmit()}>
-        <div className="walletModal">
+        <div className="walletModal" onClick={(e) => e.stopPropagation()}>
           <div className="d-flex flex-column align-items-center">
             <p className="fs-3">가입 확인</p>
             <span>확인 후 계정이 자동으로 생성됩니다.</span>
