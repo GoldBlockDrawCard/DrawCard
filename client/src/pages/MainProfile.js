@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Example from "../assets/images/ex1.png";
+import { useNavigate } from "react-router-dom";
 import Profile from "../assets/images/defualt.png";
 import Change from "../assets/images/change.png";
 import { Formik, Form, Field } from "formik";
@@ -11,8 +10,16 @@ import { useAccount } from "wagmi";
 const MainProfile = () => {
   const [category, setCategory] = useState("buy");
   const { address } = useAccount();
-  const location = useLocation();
   const navigate = useNavigate();
+  const fileRef = useRef();
+
+  const FILE_SIZE = 1024 * 1024;
+  const SUPPORTED_FORMATS = [
+    "image/jpg",
+    "image/jpeg",
+    "image/gif",
+    "image/png",
+  ];
 
   const DesignSchema = Yup.object().shape({
     cardName: Yup.string()
@@ -28,6 +35,22 @@ const MainProfile = () => {
       .min(1, "1 이상으로 입력해주세요!")
       .max(999999, "999,999 이하로 입력해주세요!")
       .required("디자인 가격을 입력해주세요!"),
+    cardImg: Yup.mixed()
+      .required("디자인을 추가해주세요!")
+      .test("FILE_Type", "jpg, jpeg, png, gif 파일만 업로드 가능합니다!", (value) => {
+        return value && fileRef.current
+          ? SUPPORTED_FORMATS.includes(fileRef.current.files[0].type)
+            ? true
+            : false
+          : true;
+      })
+      .test("fileSize", "파일 크기는 1MB까지만 가능합니다.", (value) => {
+        return value && fileRef.current
+          ? fileRef.current.files[0].size <= FILE_SIZE
+            ? true
+            : false
+          : true;
+      }),
   });
 
   const handleSubmit = (e) => {
@@ -251,7 +274,12 @@ const MainProfile = () => {
                   className="col-5 d-flex justify-content-between"
                 >
                   디자인 이미지
-                  <Field id="cardImg" name="cardImg" type="file" />
+                  <Field
+                    id="cardImg"
+                    name="cardImg"
+                    type="file"
+                    innerRef={fileRef}
+                  />
                 </label>
                 {errors.cardImg && touched.cardImg ? (
                   <div id="cardImgError">{errors.cardImg}</div>
